@@ -45,7 +45,7 @@ class _HomeState extends State<Home> {
         child: Column(
           children: [
             SvgPicture.asset("assets/login.svg",
-                height: size.height * 0.3),
+                height: size.height * 0.25),
             // SvgPicture.asset("assets/chat.svg",height: 100, width: 100),
             Padding(
               padding: const EdgeInsets.all(8.0),

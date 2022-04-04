@@ -1,5 +1,6 @@
 import 'package:contactus/contactus.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Conntact extends StatelessWidget {
   const Conntact({Key? key}) : super(key: key);
@@ -15,10 +16,10 @@ class Conntact extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.home_outlined),
+          icon: const Icon(Icons.arrow_back_ios_new),
         ),
-          title: Text("Contact")),
-        backgroundColor: Color.fromARGB(255, 7, 9, 15),
+          title:  Text("Contact",style: GoogleFonts.redressed(fontSize: 28, color: Colors.white,fontWeight: FontWeight.w500))),
+        backgroundColor: const Color.fromARGB(255, 7, 9, 15),
         body: Column(
           children: [
             SizedBox(height: size.height * 0.05),
@@ -27,7 +28,7 @@ class Conntact extends StatelessWidget {
               email: 'emilio113kariuki@gmail.com',
               companyName: 'Emilio kariuki',
               phoneNumber: '+254 796 250 443',
-              dividerThickness: 2,
+              dividerThickness: 1,
               githubUserName: 'emilio-kariuki',
               linkedinURL: 'https://www.linkedin.com/in/emilio-kariuki/',
               tagLine: 'Flutter Developer',

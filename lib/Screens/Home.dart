@@ -3,6 +3,7 @@
 import 'package:data/build/lottie.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import "package:flutter/material.dart";
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
@@ -28,6 +29,7 @@ class _HomeState extends State<Home> {
       body: SafeArea(
         child: Column(
           children: [
+            SvgPicture.asset("assets/chat.svg"),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
@@ -40,6 +42,7 @@ class _HomeState extends State<Home> {
                 ),
                 child: Column(
                   children: [
+                    
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [

@@ -6,25 +6,31 @@ class Conntact extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        appBar: AppBar(title: Text("Contact")),
         backgroundColor: Colors.teal,
-        body: ContactUs(
-          logo: const AssetImage('assets/emilio.jpg'),
-          email: 'emilio113kariuki@gmail.com',
-          companyName: 'Emilio kariuki',
-          phoneNumber: '+254 796 250 443',
-          dividerThickness: 2,
-          githubUserName: 'emilio-kariuki',
-          linkedinURL: 'https://www.linkedin.com/in/emilio-kariuki/',
-          tagLine: 'Flutter Developer',
-          twitterHandle: 'HighTech113',
-           cardColor: Color.fromARGB(255, 7, 9, 15), 
-           companyColor: Colors.white, 
-           taglineColor: Colors.white, 
-           textColor: Colors.white,
-          
+        body: Column(
+          children: [
+            SizedBox(height: size.height * 0.05),
+            ContactUs(
+              logo: const AssetImage('assets/emilio.jpg'),
+              email: 'emilio113kariuki@gmail.com',
+              companyName: 'Emilio kariuki',
+              phoneNumber: '+254 796 250 443',
+              dividerThickness: 2,
+              githubUserName: 'emilio-kariuki',
+              linkedinURL: 'https://www.linkedin.com/in/emilio-kariuki/',
+              tagLine: 'Flutter Developer',
+              twitterHandle: 'HighTech113',
+              cardColor: Color.fromARGB(255, 7, 9, 15),
+              companyColor: Colors.white,
+              taglineColor: Colors.white,
+              textColor: Colors.white,
+            ),
+          ],
         ),
       ),
     );

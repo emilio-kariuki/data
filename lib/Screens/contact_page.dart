@@ -30,6 +30,7 @@ class Conntact extends StatelessWidget {
               phoneNumber: '+254 796 250 443',
               dividerThickness: 1,
               companyFontSize: 30,
+              website: "https://linktr.ee/emiliokariuki",
               githubUserName: 'emilio-kariuki',
               linkedinURL: 'https://www.linkedin.com/in/emilio-kariuki/',
               tagLine: 'Flutter Developer',

@@ -29,6 +29,7 @@ class Conntact extends StatelessWidget {
               companyName: 'Emilio kariuki',
               phoneNumber: '+254 796 250 443',
               dividerThickness: 1,
+              companyFontSize: 30,
               githubUserName: 'emilio-kariuki',
               linkedinURL: 'https://www.linkedin.com/in/emilio-kariuki/',
               tagLine: 'Flutter Developer',

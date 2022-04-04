@@ -26,10 +26,21 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Color.fromARGB(255, 7, 9, 15),
+        title: const Text("Youth Data"),
+        actions: [
+          IconButton(
+            onPressed: (){},
+            icon: Icon(Icons.settings)
+          ),
+        ],
+      ),
       body: SafeArea(
         child: Column(
           children: [
-            SvgPicture.asset("assets/chat.svg",height: 100, width: 100),
+            // SvgPicture.asset("assets/chat.svg",height: 100, width: 100),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(

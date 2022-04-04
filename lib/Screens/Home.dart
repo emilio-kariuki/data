@@ -52,14 +52,20 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: const Color.fromARGB(255, 7, 9, 15),
-        title: const Text("Youth Data"),
+        title: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: const Text("Youth Data"),
+        ),
         actions: [
-          IconButton(
-              onPressed: () {
-                Get.to(const Conntact());
-              },
-              icon: const Icon(Icons.phone)),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.settings)),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: IconButton(
+                onPressed: () {
+                  Get.to(const Conntact());
+                },
+                icon: const Icon(Icons.phone)),
+          ),
+          // IconButton(onPressed: () {}, icon: const Icon(Icons.settings)),
         ],
       ),
       body: SafeArea(

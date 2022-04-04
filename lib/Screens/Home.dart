@@ -29,7 +29,7 @@ class _HomeState extends State<Home> {
       body: SafeArea(
         child: Column(
           children: [
-            SvgPicture.asset("assets/chat.svg"),
+            SvgPicture.asset("assets/chat.svg",height: 100, width: 100),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
@@ -104,7 +104,7 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                   const Padding(
-                    padding: EdgeInsets.only(left: 10, right: 10),
+                    padding: EdgeInsets.only(left: 7, right: 10),
                     child: Divider(
                       color: Colors.white,
                       thickness: 1,

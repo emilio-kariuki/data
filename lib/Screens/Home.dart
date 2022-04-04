@@ -27,7 +27,18 @@ class _HomeState extends State<Home> {
   String? selectedGender;
   String? selectedCommissioned;
   bool loading = false;
-  List<String> items = ["Centre", "Mugumo", "Makedonia", "pioneer"];
+  List<String> items = [
+    "Centre", 
+    "Mugumo", 
+    "Makedonia", 
+    "pioneer",
+    "Gatero",
+    "Imani",
+    "Jordan",
+    "Ebenezar",
+    "Siron",
+    "Shalom",
+    "Marmane"];
   List<String> itemGender = ["Male", "Female"];
   List<String> itemCommissioned = ["Yes", "No"];
   @override

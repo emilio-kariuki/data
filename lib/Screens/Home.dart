@@ -82,7 +82,7 @@ class _HomeState extends State<Home> {
                           height: 10,
                         ),
                       ),
-                      Itemz(size, "Name", "assets/person_2.json", name),
+                      Itemz(size, "Name", "assets/person_2.json", name,TextInputType.text),
                       GenderDropdown(size),
                     ],
                   ),
@@ -232,8 +232,8 @@ class _HomeState extends State<Home> {
                 height: 10,
               ),
             ),
-            Itemz(size, "Phone Number", "assets/phone_2.json", phone),
-            Itemz(size, "Email", "assets/mail_3.json", email),
+            Itemz(size, "Phone Number", "assets/phone_2.json", phone,TextInputType.number),
+            Itemz(size, "Email", "assets/mail_3.json", email,TextInputType.text),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -471,7 +471,7 @@ class _HomeState extends State<Home> {
   }
 
   Padding Itemz(
-      Size size, String name, String lottieUrl, TextEditingController action) {
+      Size size, String name, String lottieUrl, TextEditingController action,TextInputType type) {
     return Padding(
       padding: const EdgeInsets.only(left: 20, bottom: 8, top: 5),
       child: Row(
@@ -483,7 +483,7 @@ class _HomeState extends State<Home> {
           Flexible(
             flex: 1,
             child: TextFormField(
-              //keyboardType: TextInputType.multiline,
+              keyboardType: type,
               // style: TextStyle(height:10),
 
               decoration: InputDecoration(

@@ -44,153 +44,155 @@ class _HomeState extends State<Home> {
         ],
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-            SvgPicture.asset("assets/login.svg", height: size.height * 0.17),
-            // SvgPicture.asset("assets/chat.svg",height: 100, width: 100),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                height: size.height * 0.21,
-                width: size.width,
-                padding: const EdgeInsets.all(3),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Color.fromARGB(255, 7, 9, 15),
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10, top: 5),
-                          child: Text("Personal",
-                              style: GoogleFonts.redressed(
-                                  fontSize: 22,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w500)),
-                        ),
-                      ],
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 10, right: 10),
-                      child: Divider(
-                        color: Colors.white,
-                        thickness: 1,
-                        height: 10,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SvgPicture.asset("assets/login.svg", height: size.height * 0.17),
+              // SvgPicture.asset("assets/chat.svg",height: 100, width: 100),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: size.height * 0.21,
+                  width: size.width,
+                  padding: const EdgeInsets.all(3),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Color.fromARGB(255, 7, 9, 15),
+                  ),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10, top: 5),
+                            child: Text("Personal",
+                                style: GoogleFonts.redressed(
+                                    fontSize: 22,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w500)),
+                          ),
+                        ],
                       ),
-                    ),
-                    Itemz(size, "Name", "assets/person_2.json", name),
-                    GenderDropdown(size),
-                  ],
+                      const Padding(
+                        padding: EdgeInsets.only(left: 10, right: 10),
+                        child: Divider(
+                          color: Colors.white,
+                          thickness: 1,
+                          height: 10,
+                        ),
+                      ),
+                      Itemz(size, "Name", "assets/person_2.json", name),
+                      GenderDropdown(size),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            Contact(size),
-            Padding(
-              padding: const EdgeInsets.all(7.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: size.height * 0.06,
-                    width: size.width * 0.36,
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                            Color.fromARGB(255, 14, 14, 20)),
-                        // MaterialStateProperty<Color?>?
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                            side: BorderSide(
-                              color: Color.fromARGB(255, 14, 14, 20),
-                              width: 2.0,
+              Contact(size),
+              Padding(
+                padding: const EdgeInsets.all(7.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: size.height * 0.06,
+                      width: size.width * 0.36,
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                              Color.fromARGB(255, 14, 14, 20)),
+                          // MaterialStateProperty<Color?>?
+                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                              side: BorderSide(
+                                color: Color.fromARGB(255, 14, 14, 20),
+                                width: 2.0,
+                              ),
                             ),
                           ),
                         ),
+                        child:
+                            Text('Close', style: GoogleFonts.roboto(fontSize: 20)),
+                        onPressed: () => exit(0),
                       ),
-                      child:
-                          Text('Close', style: GoogleFonts.roboto(fontSize: 20)),
-                      onPressed: () => exit(0),
                     ),
-                  ),
-                  SizedBox(width: size.width * 0.08),
-                  //the submit button for the application
-                  loading
-                      ? CircularProgressIndicator()
-                      //the code to show the dialog box
-                      : SizedBox(
-                          height: size.height * 0.06,
-                          width: size.width * 0.36,
-                          child: ElevatedButton(
-                            // disabledColor: isActivated ? Colors.grey : Color.fromARGB(255, 14, 14, 20),
-                            // color: Color.fromARGB(255, 14, 14, 20),
-                            // shape: RoundedRectangleBorder(
-                            //     borderRadius: BorderRadius.circular(30)),
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
-                                  Color.fromARGB(255, 14, 14, 20)),
-                              // MaterialStateProperty<Color?>?
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30.0),
-                                  side: BorderSide(
-                                    color: Color.fromARGB(255, 14, 14, 20),
-                                    width: 2.0,
+                    SizedBox(width: size.width * 0.08),
+                    //the submit button for the application
+                    loading
+                        ? CircularProgressIndicator()
+                        //the code to show the dialog box
+                        : SizedBox(
+                            height: size.height * 0.06,
+                            width: size.width * 0.36,
+                            child: ElevatedButton(
+                              // disabledColor: isActivated ? Colors.grey : Color.fromARGB(255, 14, 14, 20),
+                              // color: Color.fromARGB(255, 14, 14, 20),
+                              // shape: RoundedRectangleBorder(
+                              //     borderRadius: BorderRadius.circular(30)),
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(
+                                    Color.fromARGB(255, 14, 14, 20)),
+                                // MaterialStateProperty<Color?>?
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
+                                    side: BorderSide(
+                                      color: Color.fromARGB(255, 14, 14, 20),
+                                      width: 2.0,
+                                    ),
                                   ),
                                 ),
                               ),
+                              child: Text('Submit',
+                                  style: GoogleFonts.roboto(
+                                      fontSize: 20, color: Colors.white)),
+                              onPressed: () async {
+                                if (selectedGender == null &&
+                                    name == null &&
+                                    phone == null) {
+                                  Fluttertoast.showToast(
+                                      backgroundColor: Colors.red,
+                                      msg: "Fill Empty Fields",
+                                      toastLength: Toast.LENGTH_SHORT,
+                                      gravity: ToastGravity.BOTTOM,
+                                      timeInSecForIosWeb: 1,
+                                      fontSize: 16.0);
+                                } else {
+                                  setState(() {
+                                    loading = true;
+                                  });
+                                  await _makeGetRequest();
+                                  loading
+                                      ? CircularProgressIndicator(
+                                          color: Color.fromARGB(255, 240, 144, 1),
+                                        )
+                                      : await Fluttertoast.showToast(
+                                          backgroundColor:
+                                              Color.fromARGB(255, 105, 228, 4),
+                                          msg: "Information Sent Successfully !!",
+                                          toastLength: Toast.LENGTH_LONG,
+                                          gravity: ToastGravity.BOTTOM,
+                                          timeInSecForIosWeb: 1,
+                                          fontSize: 16.0);
+                                  // Future.delayed(const Duration(milliseconds: 1670),
+                                  //     () => Navigator.of(context).pop());
+                                  setState(() {
+                                    loading = false;
+                                  });
+                                  
+        
+                                  //selectedMethod = null;
+                                }
+                              },
                             ),
-                            child: Text('Submit',
-                                style: GoogleFonts.roboto(
-                                    fontSize: 20, color: Colors.white)),
-                            onPressed: () async {
-                              if (selectedGender == null &&
-                                  name == null &&
-                                  phone == null) {
-                                Fluttertoast.showToast(
-                                    backgroundColor: Colors.red,
-                                    msg: "Fill Empty Fields",
-                                    toastLength: Toast.LENGTH_SHORT,
-                                    gravity: ToastGravity.BOTTOM,
-                                    timeInSecForIosWeb: 1,
-                                    fontSize: 16.0);
-                              } else {
-                                setState(() {
-                                  loading = true;
-                                });
-                                await _makeGetRequest();
-                                loading
-                                    ? CircularProgressIndicator(
-                                        color: Color.fromARGB(255, 240, 144, 1),
-                                      )
-                                    : await Fluttertoast.showToast(
-                                        backgroundColor:
-                                            Color.fromARGB(255, 105, 228, 4),
-                                        msg: "Information Sent Successfully !!",
-                                        toastLength: Toast.LENGTH_LONG,
-                                        gravity: ToastGravity.BOTTOM,
-                                        timeInSecForIosWeb: 1,
-                                        fontSize: 16.0);
-                                // Future.delayed(const Duration(milliseconds: 1670),
-                                //     () => Navigator.of(context).pop());
-                                setState(() {
-                                  loading = false;
-                                });
-                                
-
-                                //selectedMethod = null;
-                              }
-                            },
                           ),
-                        ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

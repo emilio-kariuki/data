@@ -28,17 +28,19 @@ class _HomeState extends State<Home> {
   String? selectedCommissioned;
   bool loading = false;
   List<String> items = [
-    "Centre", 
-    "Mugumo", 
-    "Makedonia", 
-    "pioneer",
+    "Beraka",
+    "Centre",
+    "Ebenezar",
     "Gatero",
     "Imani",
     "Jordan",
-    "Ebenezar",
+    "Marmanet",
+    "Mugumo",
+    "Macendonia",
+    "pioneer",
     "Siron",
     "Shalom",
-    "Marmane"];
+  ];
   List<String> itemGender = ["Male", "Female"];
   List<String> itemCommissioned = ["Yes", "No"];
   @override
@@ -93,7 +95,8 @@ class _HomeState extends State<Home> {
                           height: 10,
                         ),
                       ),
-                      Itemz(size, "Name", "assets/person_2.json", name,TextInputType.text),
+                      Itemz(size, "Name", "assets/person_2.json", name,
+                          TextInputType.text),
                       GenderDropdown(size),
                     ],
                   ),
@@ -113,7 +116,8 @@ class _HomeState extends State<Home> {
                           backgroundColor: MaterialStateProperty.all(
                               Color.fromARGB(255, 14, 14, 20)),
                           // MaterialStateProperty<Color?>?
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30.0),
                               side: BorderSide(
@@ -123,8 +127,8 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                         ),
-                        child:
-                            Text('Close', style: GoogleFonts.roboto(fontSize: 20)),
+                        child: Text('Close',
+                            style: GoogleFonts.roboto(fontSize: 20)),
                         onPressed: () => exit(0),
                       ),
                     ),
@@ -177,12 +181,14 @@ class _HomeState extends State<Home> {
                                   await _makeGetRequest();
                                   loading
                                       ? CircularProgressIndicator(
-                                          color: Color.fromARGB(255, 240, 144, 1),
+                                          color:
+                                              Color.fromARGB(255, 240, 144, 1),
                                         )
                                       : await Fluttertoast.showToast(
                                           backgroundColor:
                                               Color.fromARGB(255, 105, 228, 4),
-                                          msg: "Information Sent Successfully !!",
+                                          msg:
+                                              "Information Sent Successfully !!",
                                           toastLength: Toast.LENGTH_LONG,
                                           gravity: ToastGravity.BOTTOM,
                                           timeInSecForIosWeb: 1,
@@ -192,8 +198,7 @@ class _HomeState extends State<Home> {
                                   setState(() {
                                     loading = false;
                                   });
-                                  
-        
+
                                   //selectedMethod = null;
                                 }
                               },
@@ -243,8 +248,10 @@ class _HomeState extends State<Home> {
                 height: 10,
               ),
             ),
-            Itemz(size, "Phone Number", "assets/phone_2.json", phone,TextInputType.number),
-            Itemz(size, "Email", "assets/mail_3.json", email,TextInputType.text),
+            Itemz(size, "Phone Number", "assets/phone_2.json", phone,
+                TextInputType.number),
+            Itemz(
+                size, "Email", "assets/mail_3.json", email, TextInputType.text),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -481,8 +488,8 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Padding Itemz(
-      Size size, String name, String lottieUrl, TextEditingController action,TextInputType type) {
+  Padding Itemz(Size size, String name, String lottieUrl,
+      TextEditingController action, TextInputType type) {
     return Padding(
       padding: const EdgeInsets.only(left: 20, bottom: 8, top: 5),
       child: Row(

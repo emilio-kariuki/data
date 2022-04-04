@@ -19,7 +19,7 @@ class Conntact extends StatelessWidget {
           githubUserName: 'emilio-kariuki',
           linkedinURL: 'https://www.linkedin.com/in/emilio-kariuki/',
           tagLine: 'Flutter Developer',
-          twitterHandle: '@HighTech114',
+          twitterHandle: '@HighTech113',
            cardColor: Color.fromARGB(255, 7, 9, 15), 
            companyColor: Colors.white, 
            taglineColor: Colors.white, 

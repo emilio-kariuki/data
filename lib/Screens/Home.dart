@@ -2,11 +2,13 @@
 
 import 'dart:io';
 
+import 'package:data/Screens/contact_page.dart';
 import 'package:data/build/lottie.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
@@ -52,7 +54,11 @@ class _HomeState extends State<Home> {
         backgroundColor: const Color.fromARGB(255, 7, 9, 15),
         title: const Text("Youth Data"),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.phone)),
+          IconButton(
+              onPressed: () {
+                Get.to(const Conntact());
+              },
+              icon: const Icon(Icons.phone)),
           IconButton(onPressed: () {}, icon: const Icon(Icons.settings)),
         ],
       ),

@@ -49,7 +49,7 @@ class _HomeState extends State<Home> {
         child: Column(
           children: [
             SvgPicture.asset("assets/login.svg",
-                height: size.height * 0.25),
+                height: size.height * 0.17),
             // SvgPicture.asset("assets/chat.svg",height: 100, width: 100),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -102,7 +102,7 @@ class _HomeState extends State<Home> {
     return Padding(
             padding: const EdgeInsets.only(left: 8, right: 8),
             child: Container(
-              height: size.height * 0.4,
+              height: size.height * 0.41,
               width: size.width,
               padding: const EdgeInsets.all(3),
               decoration: BoxDecoration(
@@ -156,6 +156,7 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                   DistrictDropdown(size),
+                  CommissionedDropdown(size),
                 ],
               ),
             ),

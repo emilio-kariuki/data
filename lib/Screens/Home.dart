@@ -60,7 +60,7 @@ class _HomeState extends State<Home> {
                     ),
                     
                     Itemz(size,"Name","assets/person_2.json",name),
-                    Itemz(size,"Gender","assets/gender_1.json",email),
+                    Itemz(size,"Gender","assets/gender_2.json",email),
                   ],
                 ),
               ),

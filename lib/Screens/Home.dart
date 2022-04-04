@@ -112,7 +112,7 @@ class _HomeState extends State<Home> {
                           const EdgeInsets.only(left: 20, bottom: 8, top: 5),
                       child: Row(
                         children: [
-                          LottieContain(lottieUrl: "assets/lottie/select.json"),
+                          LottieContain(lottieUrl: "assets/district_1.json"),
                           SizedBox(width: size.width * 0.06),
                           DropdownButton2(
                             hint: Text("Select",

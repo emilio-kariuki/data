@@ -43,6 +43,7 @@ class Conntact extends StatelessWidget {
                 taglineColor: Colors.white,
                 textColor: Colors.white,
               ),
+              SizedBox(height: size.height * 0.01),
               Center(child: Text("Feel Free to reach out",style: GoogleFonts.redressed(fontSize: 28, color: Colors.white,fontWeight: FontWeight.w500)))
             ],
           ),

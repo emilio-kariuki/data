@@ -20,12 +20,7 @@ class _HomeState extends State<Home> {
   final name = TextEditingController();
   final district = TextEditingController();
   String? selectedDistrict;
-  List<String> items = [
-    "Centre",
-    "Mugumo",
-    "Makedonia",
-    "pioneer"
-  ];
+  List<String> items = ["Centre", "Mugumo", "Makedonia", "pioneer"];
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -72,124 +67,123 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 8, right: 8),
-              child: Container(
-                height: size.height * 0.29,
-                width: size.width,
-                padding: const EdgeInsets.all(3),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Color.fromARGB(255, 7, 9, 15),
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10, top: 5),
-                          child: Text("Contact",
-                              style: GoogleFonts.redressed(
-                                  fontSize: 22,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w500)),
-                        ),
-                      ],
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 10, right: 10),
-                      child: Divider(
-                        color: Colors.white,
-                        thickness: 1,
-                        height: 10,
-                      ),
-                    ),
-                    Itemz(size, "Phone Number", "assets/phone_2.json", phone),
-                    Itemz(size, "Email", "assets/mail_3.json", email),
-                    DistrictDropdown(size),
-                  ],
-                ),
-              ),
-            ),
+            Contact(size),
           ],
         ),
       ),
     );
   }
 
+  Padding Contact(Size size) {
+    return Padding(
+            padding: const EdgeInsets.only(left: 8, right: 8),
+            child: Container(
+              height: size.height * 0.29,
+              width: size.width,
+              padding: const EdgeInsets.all(3),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Color.fromARGB(255, 7, 9, 15),
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10, top: 5),
+                        child: Text("Contact",
+                            style: GoogleFonts.redressed(
+                                fontSize: 22,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500)),
+                      ),
+                    ],
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 10, right: 10),
+                    child: Divider(
+                      color: Colors.white,
+                      thickness: 1,
+                      height: 10,
+                    ),
+                  ),
+                  Itemz(size, "Phone Number", "assets/phone_2.json", phone),
+                  Itemz(size, "Email", "assets/mail_3.json", email),
+                  DistrictDropdown(size),
+                ],
+              ),
+            ),
+          );
+  }
+
   Padding DistrictDropdown(Size size) {
     return Padding(
-                    padding:
-                        const EdgeInsets.only(left: 20, bottom: 8, top: 5),
-                    child: Row(
-                      children: [
-                        LottieContain(lottieUrl: "assets/district_1.json"),
-                        SizedBox(width: size.width * 0.06),
-                        DropdownButton2(
-                          hint: Text("Select",
-                              style: GoogleFonts.roboto(
-                                  color: Color.fromARGB(255, 49, 49, 49))),
-                          value: selectedDistrict,
-                          onChanged: (value) {
-                            setState(() {
-                              // getLocation();
-                              selectedDistrict = value as String;
-                              print(selectedDistrict);
-                            });
-                          },
-                          icon: const Icon(
-                            Icons.arrow_forward_ios_outlined,
-                          ),
-                          iconSize: 18,
-                          iconEnabledColor: Colors.indigo,
-                          iconDisabledColor:
-                              Color.fromARGB(255, 255, 255, 255),
-                          buttonHeight: size.height * 0.06,
-                          buttonWidth: size.width * 0.65,
-                          items: items
-                              .map((item) => DropdownMenuItem<String>(
-                                    value: item,
-                                    child: Text(
-                                      item,
-                                      style: GoogleFonts.notoSerif(
-                                          fontSize: 18,
-                                          color:
-                                              Color.fromARGB(255, 58, 57, 57),
-                                          fontWeight: FontWeight.w600),
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ))
-                              .toList(),
-                          buttonPadding:
-                              const EdgeInsets.only(left: 14, right: 14),
-                          buttonDecoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(
-                              width: 1,
-                              color: Color.fromARGB(255, 180, 182, 184),
-                            ),
-                            color: Color.fromARGB(255, 255, 255, 255),
-                          ),
-                          buttonElevation: 5,
-                          itemHeight: 35,
-                          itemPadding:
-                              const EdgeInsets.only(left: 14, right: 14),
-                          dropdownMaxHeight: 250,
-                          dropdownWidth: 200,
-                          dropdownPadding: EdgeInsets.only(top: 3),
-                          dropdownDecoration: BoxDecoration(
-                            color: Color.fromARGB(255, 238, 235, 235),
-                          ),
-                          dropdownElevation: 5,
-                          scrollbarRadius: const Radius.circular(20),
-                          scrollbarThickness: 10,
-                          scrollbarAlwaysShow: true,
-                          offset: const Offset(18, -50),
-                        ),
-                      ],
-                    ),
-                  );
+      padding: const EdgeInsets.only(left: 20, bottom: 8, top: 5),
+      child: Row(
+        children: [
+          LottieContain(lottieUrl: "assets/district_1.json"),
+          SizedBox(width: size.width * 0.06),
+          DropdownButton2(
+            hint: Text("Select",
+                style:
+                    GoogleFonts.roboto(color: Color.fromARGB(255, 49, 49, 49))),
+            value: selectedDistrict,
+            onChanged: (value) {
+              setState(() {
+                // getLocation();
+                selectedDistrict = value as String;
+                print(selectedDistrict);
+              });
+            },
+            icon: const Icon(
+              Icons.arrow_forward_ios_outlined,
+            ),
+            iconSize: 18,
+            iconEnabledColor: Colors.indigo,
+            iconDisabledColor: Color.fromARGB(255, 255, 255, 255),
+            buttonHeight: size.height * 0.06,
+            buttonWidth: size.width * 0.65,
+            items: items
+                .map((item) => DropdownMenuItem<String>(
+                      value: item,
+                      child: Text(
+                        item,
+                        style: GoogleFonts.notoSerif(
+                            fontSize: 18,
+                            color: Color.fromARGB(255, 58, 57, 57),
+                            fontWeight: FontWeight.w600),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ))
+                .toList(),
+            buttonPadding: const EdgeInsets.only(left: 14, right: 14),
+            buttonDecoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                width: 1,
+                color: Color.fromARGB(255, 180, 182, 184),
+              ),
+              color: Color.fromARGB(255, 255, 255, 255),
+            ),
+            buttonElevation: 5,
+            itemHeight: 35,
+            itemPadding: const EdgeInsets.only(left: 14, right: 14),
+            dropdownMaxHeight: 250,
+            dropdownWidth: 200,
+            dropdownPadding: EdgeInsets.only(top: 3),
+            dropdownDecoration: BoxDecoration(
+              color: Color.fromARGB(255, 238, 235, 235),
+            ),
+            dropdownElevation: 5,
+            scrollbarRadius: const Radius.circular(20),
+            scrollbarThickness: 10,
+            scrollbarAlwaysShow: true,
+            offset: const Offset(18, -50),
+          ),
+        ],
+      ),
+    );
   }
 
   Padding Itemz(

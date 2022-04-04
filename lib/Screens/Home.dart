@@ -65,6 +65,47 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.only(left:8, right: 8),
+              child: Container(
+                height: size.height * 0.29,
+                width: size.width,
+                padding: const EdgeInsets.all(3),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Color.fromARGB(255, 7, 9, 15),
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10, top: 5),
+                          child: Text("Contact",
+                              style: GoogleFonts.redressed(
+                                  fontSize: 22,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500)),
+                        ),
+                      ],
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 10, right: 10),
+                      child: Divider(
+                        color: Colors.white,
+                        thickness: 1,
+                        height: 10,
+                      ),
+                    ),
+                    
+                    Itemz(size,"Name","assets/person_2.json",name),
+                    Itemz(size,"Email","assets/mail_1.json",email),
+                    Itemz(size,"Email","assets/mail_1.json",email),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),

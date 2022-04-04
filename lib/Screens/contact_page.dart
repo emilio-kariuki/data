@@ -12,6 +12,8 @@ class Conntact extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 7, 9, 15),
+          elevation: 0,
           leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
@@ -22,7 +24,7 @@ class Conntact extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 7, 9, 15),
         body: Column(
           children: [
-            SizedBox(height: size.height * 0.05),
+            SizedBox(height: size.height * 0.03),
             ContactUs(
               logo: const AssetImage('assets/emilio.jpg'),
               email: 'emilio113kariuki@gmail.com',

@@ -139,7 +139,7 @@ class _HomeState extends State<Home> {
           );
   }
 
-  Padding DistrictDropdown(Size size,String lottieUrl,String about, List list,  String valuePicked) {
+  Padding DistrictDropdown(Size size,String lottieUrl,String about, List<String> list,  String valuePicked) {
     return Padding(
       padding: const EdgeInsets.only(left: 20, bottom: 8, top: 5),
       child: Row(

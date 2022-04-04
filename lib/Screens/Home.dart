@@ -99,7 +99,7 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                     
-                    Itemz(size,"Phone Number","assets/person_2.json",phone),
+                    Itemz(size,"Phone Number","assets/phone_2.json",phone),
                     Itemz(size,"Email","assets/mail_1.json",email),
                     Itemz(size,"Email","assets/mail_1.json",email),
                   ],

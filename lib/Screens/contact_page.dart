@@ -10,8 +10,15 @@ class Conntact extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(title: Text("Contact")),
-        backgroundColor: Colors.teal,
+        appBar: AppBar(
+          leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.home_outlined),
+        ),
+          title: Text("Contact")),
+        backgroundColor: Color.fromARGB(255, 7, 9, 15),
         body: Column(
           children: [
             SizedBox(height: size.height * 0.05),
@@ -25,7 +32,7 @@ class Conntact extends StatelessWidget {
               linkedinURL: 'https://www.linkedin.com/in/emilio-kariuki/',
               tagLine: 'Flutter Developer',
               twitterHandle: 'HighTech113',
-              cardColor: Color.fromARGB(255, 7, 9, 15),
+              cardColor: Color.fromARGB(255, 158, 158, 158),
               companyColor: Colors.white,
               taglineColor: Colors.white,
               textColor: Colors.white,

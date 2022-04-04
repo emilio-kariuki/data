@@ -28,12 +28,16 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Color.fromARGB(255, 7, 9, 15),
+        backgroundColor: const Color.fromARGB(255, 7, 9, 15),
         title: const Text("Youth Data"),
         actions: [
           IconButton(
             onPressed: (){},
-            icon: Icon(Icons.settings)
+            icon: const Icon(Icons.phone)
+          ),
+          IconButton(
+            onPressed: (){},
+            icon: const Icon(Icons.settings)
           ),
         ],
       ),

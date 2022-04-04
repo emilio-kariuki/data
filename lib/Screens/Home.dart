@@ -100,7 +100,7 @@ class _HomeState extends State<Home> {
     return Padding(
             padding: const EdgeInsets.only(left: 8, right: 8),
             child: Container(
-              height: size.height * 0.29,
+              height: size.height * 0.4,
               width: size.width,
               padding: const EdgeInsets.all(3),
               decoration: BoxDecoration(
@@ -132,6 +132,27 @@ class _HomeState extends State<Home> {
                   ),
                   Itemz(size, "Phone Number", "assets/phone_2.json", phone),
                   Itemz(size, "Email", "assets/mail_3.json", email),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Text("Church",
+                              style: GoogleFonts.redressed(
+                                  fontSize: 22,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500)),
+                        ),
+                      ],
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 10, right: 10),
+                      child: Divider(
+                        color: Colors.white,
+                        thickness: 1,
+                        height: 10,
+                      ),
+                    ),
                   DistrictDropdown(size),
                 ],
               ),

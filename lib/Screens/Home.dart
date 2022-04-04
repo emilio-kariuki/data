@@ -20,8 +20,10 @@ class _HomeState extends State<Home> {
   final gender = TextEditingController();
   final name = TextEditingController();
   final district = TextEditingController();
-  String? selectedDistrict;
+  String selectedDistrict = "center";
+  String selectedGender ="male";
   List<String> items = ["Centre", "Mugumo", "Makedonia", "pioneer"];
+  List<String> itemGender = ["Male", "Female"];
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -82,7 +84,7 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                     Itemz(size, "Name", "assets/person_2.json", name),
-                    Itemz(size, "Gender", "assets/gender_3.json", gender),
+                    DistrictDropdown(size,"assets/gender_3.json","Gender",itemGender,selectedGender),
                   ],
                 ),
               ),
@@ -130,30 +132,30 @@ class _HomeState extends State<Home> {
                   ),
                   Itemz(size, "Phone Number", "assets/phone_2.json", phone),
                   Itemz(size, "Email", "assets/mail_3.json", email),
-                  DistrictDropdown(size),
+                  DistrictDropdown(size,"assets/district_1.json","Select",items,selectedDistrict),
                 ],
               ),
             ),
           );
   }
 
-  Padding DistrictDropdown(Size size) {
+  Padding DistrictDropdown(Size size,String lottieUrl,String about, List list,  String valuePicked) {
     return Padding(
       padding: const EdgeInsets.only(left: 20, bottom: 8, top: 5),
       child: Row(
         children: [
-          LottieContain(lottieUrl: "assets/district_1.json"),
+          LottieContain(lottieUrl: lottieUrl),
           SizedBox(width: size.width * 0.06),
           DropdownButton2(
-            hint: Text("Select",
+            hint: Text(about,
                 style:
                     GoogleFonts.roboto(color: Color.fromARGB(255, 49, 49, 49))),
-            value: selectedDistrict,
+            value: valuePicked,
             onChanged: (value) {
               setState(() {
                 // getLocation();
-                selectedDistrict = value as String;
-                print(selectedDistrict);
+                valuePicked = value as String;
+                print(valuePicked);
               });
             },
             icon: const Icon(
@@ -164,7 +166,7 @@ class _HomeState extends State<Home> {
             iconDisabledColor: Color.fromARGB(255, 255, 255, 255),
             buttonHeight: size.height * 0.06,
             buttonWidth: size.width * 0.65,
-            items: items
+            items: list
                 .map((item) => DropdownMenuItem<String>(
                       value: item,
                       child: Text(

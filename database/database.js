@@ -3,7 +3,8 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-export const mongoDbConnection = mongodb.connect(
+export const mongoDbConnection = async()=>
+ mongodb.connect(
     process.env.port.MONGODB_URL,
     {
         useUnifiedTopology: true,

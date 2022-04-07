@@ -3,7 +3,7 @@ const router = express.Router();
 const Employee = require("../models/employee");
 
 router.get("/employee", function (req, res, next) {
-  Employee.find()
+  Employee.find({})
     .then((employees) => res.send(employees))
     .catch(next);
 });

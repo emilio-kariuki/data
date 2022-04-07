@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-mongoDbConnection = async()=>
+mongoDbConnection() = async()
  mongodb.connect(
     process.env.port.MONGODB_URL,
     {

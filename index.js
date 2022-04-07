@@ -5,7 +5,7 @@ const app = express();
 mongoose.connect('mongodb://localhost/data');
 mongoose.Promise = global.Promise;
 app.use(express.json());
-app.use('/api', require('./api'));
+app.use('/api', require('./data/api'));
 // app.get('/api',(req,res) => res.send("Api working fine"));
 
 

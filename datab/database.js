@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-function myConnection (){
+function mongoDbConnection (){
     return new Promise((resolve, reject)=>{
         mongodb.connect(process.env.MONGOdB_URL,(error,client)=>{
             if(error) reject(error);
@@ -17,3 +17,4 @@ function myConnection (){
         })
     })
 }
+ module

@@ -1,5 +1,5 @@
 import mongoDbConnection from '../database/database';
-import express, { urlencoded, json } from 'express';
+import express, { Request, response } from 'express';
 import router from './routes/routes';
 const app = express();
 

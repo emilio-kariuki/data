@@ -5,8 +5,7 @@ app.get('/', (req, res) => {
   res.status(200).json({ name: 'Emilio' })
 });
 app.post('/add',(req, res)=>{
-    const data = res.body;
-    
+    const data = res.body.name;
     console.log(data);
     res.end()
 

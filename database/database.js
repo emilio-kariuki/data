@@ -9,6 +9,8 @@ mongodb.connect(
         useUnifiedTopology: true,
     },
     (error,client)=>{
-        
+        if(error) throw error;
+        const database = client.db(process.env.MONGODB_URL);
+        const collection = database.collection();
     }
 );

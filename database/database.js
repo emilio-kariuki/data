@@ -12,5 +12,6 @@ mongodb.connect(
         if(error) throw error;
         const database = client.db(process.env.MONGODB_URL);
         const collection = database.collection("data");
+        await collection.find().toArray();;
     }
 );

@@ -1,6 +1,5 @@
 const express = require('express');
-const mongoose = require('mogoose');
-
+const mongoose = require('mongoose');
 const app = express();
 
 mongoose.connect('mongodb://localhost/data');

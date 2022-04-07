@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-export const mongoDbConnection = async()=>
+mongoDbConnection = async()=>
  mongodb.connect(
     process.env.port.MONGODB_URL,
     {
@@ -20,3 +20,4 @@ export const mongoDbConnection = async()=>
         console.log(dataFromDb)
     }
 );
+module.exports = mongoDbConnection();

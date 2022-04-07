@@ -3,19 +3,17 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-export const mongoDbConnection = mongodb.connect(
-    process.env.port.MONGODB_URL,
-    {
-        useUnifiedTopology: true,
-    },
-    (error,client)=>{
-        if(error) throw error;
-        console.log("Database Connected");
-        const database = client.db(process.env.MONGODB_URL);
-        const collection = database.collection("data");
-        // await collection.find().toArray();
-
-        var dataFromDb = await collection.find().toArray();
-        console.log(dataFromDb)
-    }
-);
+function myConnection (){
+    return new Promise((resolve, reject)=>{
+        mongodb.connect(process.env.MONGOdB_URL,(error,client)=>{
+            if(error) reject(error);
+            console.log("Database Connected");
+            const database = client.db(process.env.MONGODB_URL);
+            const collection = database.collection("data");
+            collection.find().toArray((error,data)=>{
+                if(error) reject(error);
+                resolve(data);
+            })
+        })
+    })
+}

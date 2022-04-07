@@ -1,4 +1,4 @@
-import mongoDbConnection from '../database/database';
+import mongoDbConnection from './database';
 import express, { Request, response } from 'express';
 import router from './routes/routes';
 const app = express();

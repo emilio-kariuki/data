@@ -7,6 +7,7 @@ mongoose.Promise = global.Promise;
 app.use(express.json());
 app.use('/api', require('./routes/api'));
 // app.get('/api',(req,res) => res.send("Api working fine"));
+app.use()
 
 
 app.listen(process.env.port || 8080, function(){

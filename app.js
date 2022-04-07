@@ -1,10 +1,10 @@
-import mongoDbConnection from './datab/database';
-import express, { Request, response } from 'express';
-import router from './routes/routes';
+const mongoDbConnection = require('../datab/database');
+const express = require('express');
+const router = require('./routes/routes');
 const app = express();
 
-app.use(urlencoded({ extended: false}));
-app.use(json());
+app.use(express.urlencoded({ extended: false}));
+app.use(express.json());
 mongoDbConnection();
 app.use('/', router);
 app.listen(8080, () => console.log("Server rocking at port 8080"));

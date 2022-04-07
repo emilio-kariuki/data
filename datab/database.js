@@ -17,4 +17,4 @@ function mongoDbConnection (){
         })
     })
 }
- module
+ module.exports = mongoDbConnection;

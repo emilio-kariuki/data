@@ -5,9 +5,12 @@ app.get('/', (req, res) => {
   res.status(200).json({ name: 'Emilio' })
 });
 app.post('/add',(req, res)=>{
-    const data = req.body.name;
-    console.log(data);
-    res.json({name: data});
+    const {name,email} = req.body;
+    console.log(name);
+    console.log(email);
+    res.json({name: {
+        name,email
+    }});
     res.end()
 
 })

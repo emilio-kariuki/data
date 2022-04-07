@@ -10,7 +10,7 @@ export const mongoDbConnection = mongodb.connect(
     },
     (error,client)=>{
         if(error) throw error;
-        console.log
+        console.log("Database Connected");
         const database = client.db(process.env.MONGODB_URL);
         const collection = database.collection("data");
         // await collection.find().toArray();

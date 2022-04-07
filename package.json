@@ -1,0 +1,26 @@
+{
+  "name": "data",
+  "version": "1.0.0",
+  "description": "Send data to database",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emilio-kariuki/data.git"
+  },
+  "author": "Emilio kariuki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emilio-kariuki/data/issues"
+  },
+  "homepage": "https://github.com/emilio-kariuki/data#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}

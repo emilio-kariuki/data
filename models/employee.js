@@ -3,10 +3,10 @@ const schema = mongoose.Schema;
 
 const EmployeeSchema = new schema({
     name: {
-        type: String,
+        type: String
     },
     no: {
-        type: Number,
+        type: Number
     }
 });
 const Employee = mongoose.model('employee', EmployeeSchema);

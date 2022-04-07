@@ -1,6 +1,9 @@
 const express = require('express');
+const mongoose = require('mogoose');
+
 const app = express();
 
+mongoose.connect('mongodb://localhost/data');
 app.get('/api',(req,res) => res.send("Api working fine"));
 
 

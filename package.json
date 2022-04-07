@@ -27,6 +27,7 @@
     "mongoose": "^6.2.10"
   },
   "devDependencies": {
+    "@types/mongodb": "^4.0.7",
     "nodemon": "^2.0.15"
   }
 }

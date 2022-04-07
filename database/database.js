@@ -11,6 +11,6 @@ mongodb.connect(
     (error,client)=>{
         if(error) throw error;
         const database = client.db(process.env.MONGODB_URL);
-        const collection = database.collection();
+        const collection = database.collection("data");
     }
 );

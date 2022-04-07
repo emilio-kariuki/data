@@ -4,5 +4,9 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 mongodb.connect(
-    process.env.port.MONGODB_URL
+    process.env.port.MONGODB_URL,
+    {
+        useUnifiedTopology: true,
+    },
+    (erro)
 );

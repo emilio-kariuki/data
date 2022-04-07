@@ -3,8 +3,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-async function mongoDbConnection()
-mongodb.connect(
+export const mongoDbConnection = mongodb.connect(
     process.env.port.MONGODB_URL,
     {
         useUnifiedTopology: true,
@@ -20,4 +19,3 @@ mongodb.connect(
         console.log(dataFromDb)
     }
 );
-module.exports = mongoDbConnection();

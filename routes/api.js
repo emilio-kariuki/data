@@ -4,7 +4,7 @@ const Employee = require("../models/employee");
 
 router.get("/employee", function (req, res, next) {
   Employee.find({})
-    .then((employees) => res.send(employees))
+    .then((employee) => res.send(employee))
     .catch(next);
 });
 

@@ -5,7 +5,7 @@ const EmployeeSchema = new schema({
     name: {
         type: String,
     },
-    employeeNo: {
+    no: {
         type: Number,
     }
 });

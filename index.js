@@ -5,8 +5,8 @@ app.get('/', (req, res) => {
   res.status(200).json({ name: 'Emilio' })
 });
 app.post('/add',(req, res)=>{
-    const data = (num_1,num_2);
-    res.send("The sum is " + num_1 + num_2);
+    const data = red.body;
+    console.log(data);
     res.end()
 
 })

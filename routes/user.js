@@ -6,7 +6,7 @@ const User = require('../models/index.model');
 app.post('/register', (req, res)=>{
     console.log("Inside the register");
     const user = new User({
-      username: req.body.name,
+      name: req.body.name,
       password: req.body.password,
       email:req.body.email
     });

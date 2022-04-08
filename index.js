@@ -35,6 +35,7 @@ async function findListingWithName(client, newListingName){
   const result = await client.db('youth').collection('data').findOne({name: newListingName});
   if(result){
     console.log("The result found is " + result);
+    console.log(result);
   }else{
     console.log("No results found in the database");
   }

@@ -16,6 +16,6 @@ app.get('/', (req, res) => {
 });
 
 const useRoute = require("./routes/user");
-app.get('/user', userRoute);
+app.get('/user', useRoute);
 
 app.listen(port,() => console.log("Server connect at " + port));

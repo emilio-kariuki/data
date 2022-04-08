@@ -16,5 +16,7 @@ async function main(){
 main().catch(console.error);
 
 async function listDatabase(client){
-  
+  const databasesList = await client.db().admin().listDatabases();
+  console.log(databasesList);
 }
+listDatabase(client);

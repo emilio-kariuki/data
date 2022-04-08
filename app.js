@@ -1,16 +1,16 @@
 // const mongoDbConnection = require('../datab/database');
-const express = require('express');
-const router = require('./routes/routes');
+import express, { Request, Response } from 'express';
+import router from './routes/routes';
 const app = express();
-const mongodb = require('mongodb');
-const dotenv = require('dotenv');
+import { connect } from 'mongodb';
+import { config } from 'dotenv';
 
-dotenv.config();
+config();
 
 
 function mongoDbConnection (){
     return new Promise((resolve, reject)=>{
-        mongodb.connect(process.env.MONGOdB_URL,(error,client)=>{
+        connect(process.env.MONGOdB_URL,(error,client)=>{
             if(error) reject(error);
             console.log("Database Connected");
             const database = client.db(process.env.MONGODB_URL);
@@ -23,8 +23,8 @@ function mongoDbConnection (){
     })
 }
 
-app.use(express.urlencoded({ extended: false}));
-app.use(express.json());
+app.use(urlencoded({ extended: false}));
+app.use(json());
 mongoDbConnection();
 app.use('/', router);
 app.listen(8080, () => console.log("Server rocking at port 8080"));

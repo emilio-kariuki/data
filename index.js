@@ -9,10 +9,10 @@ async function main(){
     // await listDatabase(client);
     await createListing(client,
        {
-         name: "emilio",
-        //  age: "20",
-        //  location: "Nyeri",
-        email: "emilio120kariuki@gmail.com"})
+        //  name: "emilio",
+         age: "20",
+         location: "Nyeri"});
+        // email: "emilio120kariuki@gmail.com"})
   }catch(e){
     console.error(e);
   }finally{

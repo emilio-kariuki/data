@@ -4,7 +4,7 @@ const app = express();
 app.use(express.json());
 
 const port = process.env.port || 5000;
-mongoose.connect("mongodb+srv://emilio:0722937438@cluster0.xdlrq.mongodb.net/myFirstDatabase?retryWrites=true");
+mongoose.connect("mongodb+srv://emilio:0722937438@cluster0.xdlrq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
 
 const connection = mongoose.connection;
 connection.once("open",()=>{

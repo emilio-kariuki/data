@@ -16,9 +16,8 @@
 // })
 // app.listen(3000, () => console.log('Server running'))
 // const mongoDbConnection = require('../datab/database');
-// import express, { Request, Response } from 'express';
-
-const router = require('./router/router');
+import express, { Request, Response } from 'express';
+const router = require('./')
 const app = express();
 import { connect } from 'mongodb';
 import { config } from 'dotenv';

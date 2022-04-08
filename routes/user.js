@@ -1,7 +1,7 @@
 const express = require("express");
-const router = express.Router();
 const app = express();
 const User = require("../models/index.model");
+const router = express.Router();
 
 app.post("/register", (req, res) => {
   console.log("Inside the register");

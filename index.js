@@ -15,20 +15,5 @@ app.get('/', (req, res) => {
   res.send("Response has been sent");
 });
 
-app.post('/register', (req, res)=>{
-  console.log("Inside the register");
-  const user = new User({
-    username: req.body.name,
-    password: req.body.password,
-    email:req.body.email
-  });
-  user.save().then(() => {
-   console.log("User has been saved");
-   res.status(200).json("ok").catch(err => {
-     res.status(403).json(err);
-     
-   })
-  })
-})
 
 app.listen(port,() => console.log("Server connect at " + port));

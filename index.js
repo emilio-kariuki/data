@@ -9,9 +9,9 @@ async function main(){
     // await listDatabase(client);
     await createListing(client,
        {
-         name: "emilio", 
-         age: "20",
-         location: "Nyeri",
+         name: "emilio",
+        //  age: "20",
+        //  location: "Nyeri",
         email: "emilio120kariuki@gmail.com"})
   }catch(e){
     console.error(e);
@@ -29,7 +29,7 @@ async function listDatabase(client){
 }
 
 async function createListing(client, newListing){
-  const result = await client.db('myFirstDatabase').collection('listings').insertOne(newListing);
+  const result = await client.db('youth').collection('data').insertOne(newListing);
   console.log('New Listing added with the following id : ' + result.insertedId);
 
 }

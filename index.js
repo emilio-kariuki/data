@@ -1,4 +1,5 @@
 import { MongoClient } from "mongodb";
+const express = require("express");
 
 async function main() {
   const uri =
@@ -40,3 +41,4 @@ async function findListingWithName(client, newListingName){
     console.log("No results found in the database");
   }
 }
+

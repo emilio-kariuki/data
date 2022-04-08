@@ -28,7 +28,7 @@ async function listDatabase(client) {
 
 async function createListing(client, newListing) {
   const result = await client
-    .db("youth")
+    .db("youthing")
     .collection("data")
     .insertOne(newListing);
   console.log("New Listing added with the following id : " + result.insertedId);

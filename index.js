@@ -23,7 +23,11 @@ app.post('/register', (req, res)=>{
     email:req.body.email
   });
   user.save().then(() => {
-   con("User has been saved");
+   console.log("User has been saved");
+   res.status(200).json("ok").catch(err => {
+     res.status(403).json(err);
+     res.json("registered");
+   })
   })
 })
 

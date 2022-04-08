@@ -11,7 +11,7 @@ connection.once("open",()=>{
   console.log("MogoDb database has been connected");
 });
 
-app.get('', (req, res) => {
+app.get('/', (req, res) => {
   res.send("Response has been sent");
 })
 

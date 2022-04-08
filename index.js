@@ -6,7 +6,13 @@ async function main(){
   try{
     await client.connect();
     console.log("Conneceted to database");
-    await listDatabase(client);
+    // await listDatabase(client);
+    await createListing(client,
+       {
+         name: "emilio", 
+         age: "20",
+         location: "Nyeri",
+        email: "emilio120kariuki@gmail.com"})
   }catch(e){
     console.error(e);
   }finally{
@@ -23,6 +29,7 @@ async function listDatabase(client){
 }
 
 async function createListing(client, newListing){
-  
+  const result = await client.db('myFirstDatabase').collection('listings').insertOne(newListing);
+  console.log('New Listing added with the following id : ' + result.insertedId);
 
 }

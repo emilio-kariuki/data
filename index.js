@@ -12,7 +12,7 @@ connection.once("open",()=>{
 });
 
 app.get('/', (req, res) => {
-  res.send("Response has been sent");
+  res.send("Welcome to this webpage");
 });
 
 const useRoute = require("./routes/user");

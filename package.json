@@ -1,5 +1,4 @@
 {
- 
   "name": "data",
   "version": "1.0.0",
   "description": "Send data to database",
@@ -10,7 +9,7 @@
   },
   "scripts": {
     "start": "node index",
-    "dev" : "nodemon index"
+    "dev": "nodemon index"
   },
   "repository": {
     "type": "git",

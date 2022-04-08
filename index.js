@@ -7,6 +7,9 @@ async function main(){
     await client.connect();
   }catch(e){
     console.error(e);
+  }finally{
+    await client.close();
   }
  
 }
+main().catch(console.error);

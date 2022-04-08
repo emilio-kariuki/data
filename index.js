@@ -13,6 +13,14 @@ connection.once("open",()=>{
 
 app.get('/', (req, res) => {
   res.send("Response has been sent");
+});
+
+app.post('/register', (req, res)=>{
+  console.log("Inside the register");
+  const User = new User({
+    username: req.body.name,
+    password: req.
+  })
 })
 
 app.listen(port,() => console.log("Server connect at " + port));

@@ -4,7 +4,7 @@ const uri =
     "mongodb+srv://emilio:0722937438@cluster0.xdlrq.mongodb.net/myFirstDatabase?retryWrites=true";
   const client = new MongoClient(uri);
 
-async function main() {
+export async function main() {
   
   try {
     await client.connect();
@@ -43,5 +43,5 @@ async function findListingWithName(client, newListingName){
   }
 }
 
-module.exports = main();
+
 

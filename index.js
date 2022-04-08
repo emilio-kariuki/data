@@ -17,9 +17,13 @@ app.get('/', (req, res) => {
 
 app.post('/register', (req, res)=>{
   console.log("Inside the register");
-  const User = new User({
+  const user = new User({
     username: req.body.name,
-    password: req.
+    password: req.body.password,
+    email:req.body.email
+  });
+  user.save().then(() => {
+   con("User has been saved");
   })
 })
 

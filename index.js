@@ -21,3 +21,5 @@ async function listDatabase(client){
   console.log('Databases:');
   databasesList.databases.forEach(db => console.log(' -' + db.name));
 }
+
+async function createListing(client, name)

@@ -9,7 +9,7 @@ async function main() {
     console.log("Conneceted to database");
     // await listDatabase(client);
     // 
-    await findListingWithName(client, )
+    await findListingWithName(client, "Emilio");
   } catch (e) {
     console.error(e);
   } finally {

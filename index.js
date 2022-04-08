@@ -14,3 +14,7 @@ async function main(){
  
 }
 main().catch(console.error);
+
+async function listDatabase(client){
+  
+}

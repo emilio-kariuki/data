@@ -4,7 +4,7 @@ const app = express();
 app.use(express.json());
 
 const port = process.env.port || 5000;
-mongoose.connect("mongodb://localhost:27017/AppDb",{useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: true});
+mongoose.connect("mongodb://localhost:27017/AppDb",{useNewUrlParser: true, useUnifiedTopology: true});
 
 const connection = mongoose.connection;
 connection.once("open",()=>{

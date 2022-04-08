@@ -1,5 +1,5 @@
 {
-  "type": "commonjs",
+  "type": "module",
   "name": "data",
   "version": "1.0.0",
   "description": "Send data to database",

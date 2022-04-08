@@ -26,7 +26,7 @@ app.post('/register', (req, res)=>{
    console.log("User has been saved");
    res.status(200).json("ok").catch(err => {
      res.status(403).json(err);
-     res.json("registered");
+     
    })
   })
 })

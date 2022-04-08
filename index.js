@@ -15,5 +15,7 @@ app.get('/', (req, res) => {
   res.send("Response has been sent");
 });
 
+const useRoute = require(".");
+app.get('/user', userRoute);
 
 app.listen(port,() => console.log("Server connect at " + port));

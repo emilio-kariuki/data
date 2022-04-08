@@ -8,10 +8,8 @@ async function main() {
     await client.connect();
     console.log("Conneceted to database");
     // await listDatabase(client);
-    await createListing(client, {
-      name: "Jane",
-      email: "Joy113karis@gmail.com",
-    });
+    // 
+    await findListingWithName(client, )
   } catch (e) {
     console.error(e);
   } finally {
@@ -32,4 +30,12 @@ async function createListing(client, newListing) {
     .collection("data")
     .insertOne(newListing);
   console.log("New Listing added with the following id : " + result.insertedId);
+}
+async function findListingWithName(client, newListingName){
+  const result = await client.db('youth').collection('data').findOne({name: NewListingName});
+  if(result){
+    console.log("The result found is " + result);
+  }else{
+    console.log("No results found in the database");
+  }
 }

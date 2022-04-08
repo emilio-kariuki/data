@@ -2,7 +2,7 @@ import { MongoClient } from "mongodb";
 
 async function main() {
   const uri =
-    "mongodb+srv://emilio:0722937438@cluster0.xdlrq.mongodb.net/myFirstDatabase?retryWrites=true&w=majorityL";
+    "mongodb+srv://emilio:0722937438@cluster0.xdlrq.mongodb.net/myFirstDatabase?retryWrites=true";
   const client = new MongoClient(uri);
   try {
     await client.connect();

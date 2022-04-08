@@ -32,7 +32,7 @@ async function createListing(client, newListing) {
   console.log("New Listing added with the following id : " + result.insertedId);
 }
 async function findListingWithName(client, newListingName){
-  const result = await client.db('youth').collection('data').findOne({name: NewListingName});
+  const result = await client.db('youth').collection('data').findOne({name: newListingName});
   if(result){
     console.log("The result found is " + result);
   }else{

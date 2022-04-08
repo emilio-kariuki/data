@@ -16,7 +16,7 @@ app.post("/register", (req, res) => {
       .status(200)
       .json("ok")
       .catch((err) => {
-        res.status(403).json(err);
+        res.status(403).json({msg: err});
       });
   });
 });

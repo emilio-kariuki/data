@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:data/Screens/contact_page.dart';
 import 'package:data/build/lottie.dart';
+import 'package:dio/dio.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_svg/svg.dart';
@@ -540,5 +541,8 @@ class _HomeState extends State<Home> {
     );
   }
 
-  _makeGetRequest() {}
+  _makeGetRequest() async {
+    var dio = Dio();
+    var response = await dio.post("");
+  }
 }

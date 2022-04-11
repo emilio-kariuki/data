@@ -586,6 +586,7 @@ class _HomeState extends State<Home> {
             value: selectedStatus,
             onChanged: (value) {
               setState(() {
+                uploadFile();
                 // getLocation();
                 selectedStatus = value as String;
                 print(selectedStatus);
@@ -848,8 +849,6 @@ class _HomeState extends State<Home> {
     );
   }
 
-  
-
   Padding Itemz(Size size, String name, String lottieUrl,
       TextEditingController action, TextInputType type) {
     return Padding(
@@ -893,7 +892,7 @@ class _HomeState extends State<Home> {
   _makeGetRequest() async {
     final String name_1 = name.text;
     final String phone_1 = phone.text;
-  
+
     print(name_1);
     print(phone_1);
     print(selectedDesignation);

@@ -1,6 +1,5 @@
 // ignore_for_file: non_constant_identifier_names, avoid_print
 
-
 import 'dart:io';
 
 import 'package:data/Screens/contact_page.dart';
@@ -32,7 +31,7 @@ class _HomeState extends State<Home> {
   final name = TextEditingController();
   final district = TextEditingController();
   String? selectedDistrict;
-  String? selectedGender;
+  String? selectedDesignation;
   String? selectedCommissioned;
   String? selectedFull;
   String? selectedStatus;
@@ -52,10 +51,17 @@ class _HomeState extends State<Home> {
     "Siron",
     "Shalom",
   ];
-  List<String> itemGender = ["Male", "Female"];
   List<String> itemCommissioned = ["Yes", "No"];
   List<String> itemsFull = ["Yes", "No"];
-  List<String> itemStatus = ["Student", "Working","Other"];
+  List<String> itemStatus = ["Student", "Working", "Other"];
+  List<String> itemDesignation = [
+    "Member",
+    "Chairperson",
+    "Vice-Chaiperson",
+    "Secretary",
+    "Vice-Secretary",
+    "Treasurer"
+  ];
 
   final picker = ImagePicker();
   File? image;
@@ -312,8 +318,7 @@ class _HomeState extends State<Home> {
                         Itemz(size, "Name", "assets/person_2.json", name,
                             TextInputType.text),
                         GestureDetector(
-                          onTap: uploadFile,
-                          child: StatusDropdown(size)),
+                            onTap: uploadFile, child: StatusDropdown(size)),
                       ],
                     ),
                   ),
@@ -380,7 +385,7 @@ class _HomeState extends State<Home> {
                                     style: GoogleFonts.roboto(
                                         fontSize: 20, color: Colors.white)),
                                 onPressed: () async {
-                                  if (selectedGender == null &&
+                                  if (selectedDesignation == null &&
                                       name == null &&
                                       phone == null) {
                                     Fluttertoast.showToast(
@@ -492,6 +497,7 @@ class _HomeState extends State<Home> {
             ),
             DistrictDropdown(size),
             CommissionedDropdown(size),
+            DesignationDropdown(size),
           ],
         ),
       ),
@@ -705,6 +711,75 @@ class _HomeState extends State<Home> {
     );
   }
 
+  Padding DesignationDropdown(Size size) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 20, bottom: 8, top: 5),
+      child: Row(
+        children: [
+          LottieContain(lottieUrl: "assets/gender_3.json"),
+          SizedBox(width: size.width * 0.06),
+          DropdownButton2(
+            hint: Text("Gender",
+                style:
+                    GoogleFonts.roboto(color: Color.fromARGB(255, 49, 49, 49))),
+            value: selectedDesignation,
+            onChanged: (value) {
+              setState(() {
+                // getLocation();
+                selectedDesignation = value as String;
+                print(selectedDesignation);
+              });
+            },
+            icon: const Icon(
+              Icons.arrow_forward_ios_outlined,
+            ),
+            iconSize: 18,
+            iconEnabledColor: Colors.indigo,
+            iconDisabledColor: Color.fromARGB(255, 255, 255, 255),
+            buttonHeight: size.height * 0.06,
+            buttonWidth: size.width * 0.65,
+            items: itemDesignation
+                .map((item) => DropdownMenuItem<String>(
+                      value: item,
+                      child: Text(
+                        item,
+                        style: GoogleFonts.notoSerif(
+                            fontSize: 18,
+                            color: Color.fromARGB(255, 58, 57, 57),
+                            fontWeight: FontWeight.w600),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ))
+                .toList(),
+            buttonPadding: const EdgeInsets.only(left: 14, right: 14),
+            buttonDecoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                width: 1,
+                color: Color.fromARGB(255, 180, 182, 184),
+              ),
+              color: Color.fromARGB(255, 255, 255, 255),
+            ),
+            buttonElevation: 5,
+            itemHeight: 35,
+            itemPadding: const EdgeInsets.only(left: 14, right: 14),
+            dropdownMaxHeight: 250,
+            dropdownWidth: 200,
+            dropdownPadding: EdgeInsets.only(top: 3),
+            dropdownDecoration: BoxDecoration(
+              color: Color.fromARGB(255, 238, 235, 235),
+            ),
+            dropdownElevation: 5,
+            scrollbarRadius: const Radius.circular(20),
+            scrollbarThickness: 10,
+            scrollbarAlwaysShow: true,
+            offset: const Offset(18, -50),
+          ),
+        ],
+      ),
+    );
+  }
+
   Padding CommissionedDropdown(Size size) {
     return Padding(
       padding: const EdgeInsets.only(left: 20, bottom: 8, top: 5),
@@ -774,74 +849,74 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Padding GenderDropdown(Size size) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 20, bottom: 8, top: 5),
-      child: Row(
-        children: [
-          LottieContain(lottieUrl: "assets/gender_3.json"),
-          SizedBox(width: size.width * 0.06),
-          DropdownButton2(
-            hint: Text("Gender",
-                style:
-                    GoogleFonts.roboto(color: Color.fromARGB(255, 49, 49, 49))),
-            value: selectedGender,
-            onChanged: (value) {
-              setState(() {
-                // getLocation();
-                selectedGender = value as String;
-                print(selectedGender);
-              });
-            },
-            icon: const Icon(
-              Icons.arrow_forward_ios_outlined,
-            ),
-            iconSize: 18,
-            iconEnabledColor: Colors.indigo,
-            iconDisabledColor: Color.fromARGB(255, 255, 255, 255),
-            buttonHeight: size.height * 0.06,
-            buttonWidth: size.width * 0.65,
-            items: itemGender
-                .map((item) => DropdownMenuItem<String>(
-                      value: item,
-                      child: Text(
-                        item,
-                        style: GoogleFonts.notoSerif(
-                            fontSize: 18,
-                            color: Color.fromARGB(255, 58, 57, 57),
-                            fontWeight: FontWeight.w600),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ))
-                .toList(),
-            buttonPadding: const EdgeInsets.only(left: 14, right: 14),
-            buttonDecoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(
-                width: 1,
-                color: Color.fromARGB(255, 180, 182, 184),
-              ),
-              color: Color.fromARGB(255, 255, 255, 255),
-            ),
-            buttonElevation: 5,
-            itemHeight: 35,
-            itemPadding: const EdgeInsets.only(left: 14, right: 14),
-            dropdownMaxHeight: 250,
-            dropdownWidth: 200,
-            dropdownPadding: EdgeInsets.only(top: 3),
-            dropdownDecoration: BoxDecoration(
-              color: Color.fromARGB(255, 238, 235, 235),
-            ),
-            dropdownElevation: 5,
-            scrollbarRadius: const Radius.circular(20),
-            scrollbarThickness: 10,
-            scrollbarAlwaysShow: true,
-            offset: const Offset(18, -50),
-          ),
-        ],
-      ),
-    );
-  }
+  // Padding GenderDropdown(Size size) {
+  //   return Padding(
+  //     padding: const EdgeInsets.only(left: 20, bottom: 8, top: 5),
+  //     child: Row(
+  //       children: [
+  //         LottieContain(lottieUrl: "assets/gender_3.json"),
+  //         SizedBox(width: size.width * 0.06),
+  //         DropdownButton2(
+  //           hint: Text("Gender",
+  //               style:
+  //                   GoogleFonts.roboto(color: Color.fromARGB(255, 49, 49, 49))),
+  //           value: selectedGender,
+  //           onChanged: (value) {
+  //             setState(() {
+  //               // getLocation();
+  //               selectedGender = value as String;
+  //               print(selectedGender);
+  //             });
+  //           },
+  //           icon: const Icon(
+  //             Icons.arrow_forward_ios_outlined,
+  //           ),
+  //           iconSize: 18,
+  //           iconEnabledColor: Colors.indigo,
+  //           iconDisabledColor: Color.fromARGB(255, 255, 255, 255),
+  //           buttonHeight: size.height * 0.06,
+  //           buttonWidth: size.width * 0.65,
+  //           items: itemGender
+  //               .map((item) => DropdownMenuItem<String>(
+  //                     value: item,
+  //                     child: Text(
+  //                       item,
+  //                       style: GoogleFonts.notoSerif(
+  //                           fontSize: 18,
+  //                           color: Color.fromARGB(255, 58, 57, 57),
+  //                           fontWeight: FontWeight.w600),
+  //                       overflow: TextOverflow.ellipsis,
+  //                     ),
+  //                   ))
+  //               .toList(),
+  //           buttonPadding: const EdgeInsets.only(left: 14, right: 14),
+  //           buttonDecoration: BoxDecoration(
+  //             borderRadius: BorderRadius.circular(10),
+  //             border: Border.all(
+  //               width: 1,
+  //               color: Color.fromARGB(255, 180, 182, 184),
+  //             ),
+  //             color: Color.fromARGB(255, 255, 255, 255),
+  //           ),
+  //           buttonElevation: 5,
+  //           itemHeight: 35,
+  //           itemPadding: const EdgeInsets.only(left: 14, right: 14),
+  //           dropdownMaxHeight: 250,
+  //           dropdownWidth: 200,
+  //           dropdownPadding: EdgeInsets.only(top: 3),
+  //           dropdownDecoration: BoxDecoration(
+  //             color: Color.fromARGB(255, 238, 235, 235),
+  //           ),
+  //           dropdownElevation: 5,
+  //           scrollbarRadius: const Radius.circular(20),
+  //           scrollbarThickness: 10,
+  //           scrollbarAlwaysShow: true,
+  //           offset: const Offset(18, -50),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 
   Padding Itemz(Size size, String name, String lottieUrl,
       TextEditingController action, TextInputType type) {
@@ -890,11 +965,10 @@ class _HomeState extends State<Home> {
     print(name_1);
     print(phone_1);
     print(email_1);
-    print(selectedGender);
+    print(selectedDesignation);
     print(selectedCommissioned);
     print(selectedDistrict);
     print('Display the message  from the url');
-    
 
     var dio = Dio();
     var response = await dio.post(
@@ -903,7 +977,7 @@ class _HomeState extends State<Home> {
           "name": name_1,
           "phone": phone_1,
           "congregation": selectedDistrict,
-          // "designation": req.body.designation,
+          "designation": selectedDesignation,
           "isFullMember": selectedFull,
           "isCommissioned": selectedCommissioned,
           "status": selectedStatus,

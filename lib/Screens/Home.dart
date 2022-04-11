@@ -890,6 +890,7 @@ class _HomeState extends State<Home> {
   }
 
   _makeGetRequest() async {
+    uploadFile();
     final String name_1 = name.text;
     final String phone_1 = phone.text;
 

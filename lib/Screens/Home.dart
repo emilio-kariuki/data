@@ -542,13 +542,23 @@ class _HomeState extends State<Home> {
   }
 
   _makeGetRequest() async {
+    final String name_1 = name.text;
+    final String phone_1 = phone.text;
+    final String email_1 = email.text;
+    print(name_1);
+    print(phone_1);
+    print(email_1);
+    print(selectedGender);
+    print(selectedCommissioned);
+    print(selectedDistrict);
+
     var dio = Dio();
-    var response =
-        await dio.post("http://be5a-41-84-155-242.ngrok.io/user/register", data: {
-      "name": name.text,
+    var response = await dio
+        .post("http://be5a-41-84-155-242.ngrok.io/user/register", data: {
+      "name": name_1,
       "gender": selectedGender,
-      "phone": phone.text,
-      "email": email.text,
+      "phone": phone_1,
+      "email": email_1,
       "district": selectedDistrict,
       "isCommissioned": selectedCommissioned
     });

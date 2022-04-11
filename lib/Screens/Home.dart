@@ -586,7 +586,7 @@ class _HomeState extends State<Home> {
             value: selectedStatus,
             onChanged: (value) {
               setState(() {
-                uploadFile();
+                 
                 // getLocation();
                 selectedStatus = value as String;
                 print(selectedStatus);

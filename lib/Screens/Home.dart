@@ -48,7 +48,7 @@ class _HomeState extends State<Home> {
   ];
   List<String> itemGender = ["Male", "Female"];
   List<String> itemCommissioned = ["Yes", "No"];
-  
+
   final picker = ImagePicker();
   File ?image;
 
@@ -114,6 +114,7 @@ class _HomeState extends State<Home> {
                   ),
                   child: Column(
                     children: [
+                      
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [

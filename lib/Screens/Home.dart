@@ -53,9 +53,9 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: const Color.fromARGB(255, 7, 9, 15),
-        title: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: const Text("Youth Data"),
+        title: const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text("Youth Data"),
         ),
         actions: [
           Padding(
@@ -83,7 +83,7 @@ class _HomeState extends State<Home> {
                   padding: const EdgeInsets.all(3),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Color.fromARGB(255, 7, 9, 15),
+                    color: const Color.fromARGB(255, 7, 9, 15),
                   ),
                   child: Column(
                     children: [
@@ -133,7 +133,7 @@ class _HomeState extends State<Home> {
                               MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30.0),
-                              side: BorderSide(
+                              side: const BorderSide(
                                 color: Color.fromARGB(255, 14, 14, 20),
                                 width: 2.0,
                               ),
@@ -148,7 +148,7 @@ class _HomeState extends State<Home> {
                     SizedBox(width: size.width * 0.08),
                     //the submit button for the application
                     loading
-                        ? CircularProgressIndicator()
+                        ? const CircularProgressIndicator()
                         //the code to show the dialog box
                         : SizedBox(
                             height: size.height * 0.06,
@@ -166,7 +166,7 @@ class _HomeState extends State<Home> {
                                     RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
-                                    side: BorderSide(
+                                    side: const BorderSide(
                                       color: Color.fromARGB(255, 14, 14, 20),
                                       width: 2.0,
                                     ),
@@ -236,7 +236,7 @@ class _HomeState extends State<Home> {
         padding: const EdgeInsets.all(3),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: Color.fromARGB(255, 7, 9, 15),
+          color: const Color.fromARGB(255, 7, 9, 15),
         ),
         child: Column(
           children: [
@@ -299,7 +299,7 @@ class _HomeState extends State<Home> {
       padding: const EdgeInsets.only(left: 20, bottom: 8, top: 5),
       child: Row(
         children: [
-          LottieContain(lottieUrl: "assets/district_1.json"),
+          const LottieContain(lottieUrl: "assets/district_1.json"),
           SizedBox(width: size.width * 0.06),
           DropdownButton2(
             hint: Text("Select",
@@ -318,7 +318,7 @@ class _HomeState extends State<Home> {
             ),
             iconSize: 18,
             iconEnabledColor: Colors.indigo,
-            iconDisabledColor: Color.fromARGB(255, 255, 255, 255),
+            iconDisabledColor: const Color.fromARGB(255, 255, 255, 255),
             buttonHeight: size.height * 0.06,
             buttonWidth: size.width * 0.65,
             items: items
@@ -328,7 +328,7 @@ class _HomeState extends State<Home> {
                         item,
                         style: GoogleFonts.notoSerif(
                             fontSize: 18,
-                            color: Color.fromARGB(255, 58, 57, 57),
+                            color: const Color.fromARGB(255, 58, 57, 57),
                             fontWeight: FontWeight.w600),
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -339,16 +339,16 @@ class _HomeState extends State<Home> {
               borderRadius: BorderRadius.circular(10),
               border: Border.all(
                 width: 1,
-                color: Color.fromARGB(255, 180, 182, 184),
+                color: const Color.fromARGB(255, 180, 182, 184),
               ),
-              color: Color.fromARGB(255, 255, 255, 255),
+              color: const Color.fromARGB(255, 255, 255, 255),
             ),
             buttonElevation: 5,
             itemHeight: 35,
             itemPadding: const EdgeInsets.only(left: 14, right: 14),
             dropdownMaxHeight: 250,
             dropdownWidth: 200,
-            dropdownPadding: EdgeInsets.only(top: 3),
+            dropdownPadding: const EdgeInsets.only(top: 3),
             dropdownDecoration: BoxDecoration(
               color: Color.fromARGB(255, 238, 235, 235),
             ),

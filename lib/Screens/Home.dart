@@ -75,15 +75,18 @@ class _HomeState extends State<Home> {
     }
   }
 
-  //send the data to the database 
+  //send the data to the database
 
-    Future uploadFile() async {
+  Future uploadFile() async {
     if (image == null) return;
     final fileName = basename(image!.path);
     final destination = 'files/$fileName';
 
     try {
       final ref = FirebaseStorage.instance.ref(destination).child('file/');
+      await ref.putFile(image!);
+      String imageUrl = await ref.getDownloadURL();
+      print(imageUrl);
       await ref.putFile(image!);
       print("File uploaded");
     } catch (e) {
@@ -734,6 +737,8 @@ class _HomeState extends State<Home> {
     print(selectedGender);
     print(selectedCommissioned);
     print(selectedDistrict);
+    print('Display the message  from the url');
+    uploadFile();
 
     var dio = Dio();
     var response = await dio

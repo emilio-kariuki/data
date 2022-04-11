@@ -315,11 +315,8 @@ class _HomeState extends State<Home> {
                             height: 10,
                           ),
                         ),
-                        GestureDetector(
-                          onTap: uploadFile,
-                          child: Itemz(size, "Name", "assets/person_2.json", name,
-                              TextInputType.text),
-                        ),
+                        Itemz(size, "Name", "assets/person_2.json", name,
+                            TextInputType.text),
                         StatusDropdown(size),
                       ],
                     ),

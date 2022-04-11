@@ -93,7 +93,7 @@ class _HomeState extends State<Home> {
       print(imageUrl);
       print("File uploaded");
     } catch (e) {
-      print('error occured');
+      print('error occured $e');
     }
   }
 

@@ -193,13 +193,13 @@ class _HomeState extends State<Home> {
                                   });
                                   await _makeGetRequest();
                                   loading
-                                      ? CircularProgressIndicator(
+                                      ? const CircularProgressIndicator(
                                           color:
                                               Color.fromARGB(255, 240, 144, 1),
                                         )
                                       : await Fluttertoast.showToast(
                                           backgroundColor:
-                                              Color.fromARGB(255, 105, 228, 4),
+                                              const Color.fromARGB(255, 105, 228, 4),
                                           msg:
                                               "Information Sent Successfully !!",
                                           toastLength: Toast.LENGTH_LONG,

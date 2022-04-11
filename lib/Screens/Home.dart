@@ -547,7 +547,7 @@ class _HomeState extends State<Home> {
         await dio.post("http://be5a-41-84-155-242.ngrok.io/user/register", data: {
       "name": name.text,
       "gender": selectedGender,
-      "phone": phone,
+      "phone": phone.text,
       "email": email.text,
       "district": selectedDistrict,
       "isCommissioned": selectedCommissioned

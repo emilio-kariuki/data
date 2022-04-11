@@ -1,5 +1,6 @@
 // ignore_for_file: non_constant_identifier_names, avoid_print
 
+
 import 'dart:io';
 
 import 'package:data/Screens/contact_page.dart';
@@ -33,6 +34,9 @@ class _HomeState extends State<Home> {
   String? selectedDistrict;
   String? selectedGender;
   String? selectedCommissioned;
+  String? selectedFull;
+  String? selectedStatus;
+  String? url;
   bool loading = false;
   List<String> items = [
     "Beraka",
@@ -50,6 +54,8 @@ class _HomeState extends State<Home> {
   ];
   List<String> itemGender = ["Male", "Female"];
   List<String> itemCommissioned = ["Yes", "No"];
+  List<String> itemsFull = ["Yes", "No"];
+  List<String> itemStatus = ["Student", "Working","Other"];
 
   final picker = ImagePicker();
   File? image;
@@ -83,13 +89,14 @@ class _HomeState extends State<Home> {
     final destination = 'files/$fileName';
 
     try {
-        FirebaseStorage storage = FirebaseStorage.instance;
+      FirebaseStorage storage = FirebaseStorage.instance;
       Reference ref = storage.ref().child(fileName);
       await ref.putFile(image!);
 
       // final ref = FirebaseStorage.instance.ref(destination).child('file/');
       // await ref.putFile(image!);
       String imageUrl = await ref.getDownloadURL();
+      url = imageUrl;
       print(imageUrl);
       Fluttertoast.showToast(
           backgroundColor: Color.fromARGB(255, 49, 202, 74),
@@ -304,7 +311,9 @@ class _HomeState extends State<Home> {
                         ),
                         Itemz(size, "Name", "assets/person_2.json", name,
                             TextInputType.text),
-                        GenderDropdown(size),
+                        GestureDetector(
+                          onTap: uploadFile,
+                          child: FullDropdown(size)),
                       ],
                     ),
                   ),
@@ -459,8 +468,7 @@ class _HomeState extends State<Home> {
             ),
             Itemz(size, "Phone Number", "assets/phone_2.json", phone,
                 TextInputType.number),
-            Itemz(
-                size, "Email", "assets/mail_3.json", email, TextInputType.text),
+            FullDropdown(size),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -518,6 +526,144 @@ class _HomeState extends State<Home> {
             buttonHeight: size.height * 0.06,
             buttonWidth: size.width * 0.65,
             items: items
+                .map((item) => DropdownMenuItem<String>(
+                      value: item,
+                      child: Text(
+                        item,
+                        style: GoogleFonts.notoSerif(
+                            fontSize: 18,
+                            color: const Color.fromARGB(255, 58, 57, 57),
+                            fontWeight: FontWeight.w600),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ))
+                .toList(),
+            buttonPadding: const EdgeInsets.only(left: 14, right: 14),
+            buttonDecoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                width: 1,
+                color: const Color.fromARGB(255, 180, 182, 184),
+              ),
+              color: const Color.fromARGB(255, 255, 255, 255),
+            ),
+            buttonElevation: 5,
+            itemHeight: 35,
+            itemPadding: const EdgeInsets.only(left: 14, right: 14),
+            dropdownMaxHeight: 250,
+            dropdownWidth: 200,
+            dropdownPadding: const EdgeInsets.only(top: 3),
+            dropdownDecoration: BoxDecoration(
+              color: Color.fromARGB(255, 238, 235, 235),
+            ),
+            dropdownElevation: 5,
+            scrollbarRadius: const Radius.circular(20),
+            scrollbarThickness: 10,
+            scrollbarAlwaysShow: true,
+            offset: const Offset(18, -50),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Padding StatusDropdown(Size size) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 20, bottom: 8, top: 5),
+      child: Row(
+        children: [
+          const LottieContain(lottieUrl: "assets/district_1.json"),
+          SizedBox(width: size.width * 0.06),
+          DropdownButton2(
+            hint: Text("Select your status",
+                style:
+                    GoogleFonts.roboto(color: Color.fromARGB(255, 49, 49, 49))),
+            value: selectedStatus,
+            onChanged: (value) {
+              setState(() {
+                // getLocation();
+                selectedStatus = value as String;
+                print(selectedStatus);
+              });
+            },
+            icon: const Icon(
+              Icons.arrow_forward_ios_outlined,
+            ),
+            iconSize: 18,
+            iconEnabledColor: Colors.indigo,
+            iconDisabledColor: const Color.fromARGB(255, 255, 255, 255),
+            buttonHeight: size.height * 0.06,
+            buttonWidth: size.width * 0.65,
+            items: itemStatus
+                .map((item) => DropdownMenuItem<String>(
+                      value: item,
+                      child: Text(
+                        item,
+                        style: GoogleFonts.notoSerif(
+                            fontSize: 18,
+                            color: const Color.fromARGB(255, 58, 57, 57),
+                            fontWeight: FontWeight.w600),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ))
+                .toList(),
+            buttonPadding: const EdgeInsets.only(left: 14, right: 14),
+            buttonDecoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                width: 1,
+                color: const Color.fromARGB(255, 180, 182, 184),
+              ),
+              color: const Color.fromARGB(255, 255, 255, 255),
+            ),
+            buttonElevation: 5,
+            itemHeight: 35,
+            itemPadding: const EdgeInsets.only(left: 14, right: 14),
+            dropdownMaxHeight: 250,
+            dropdownWidth: 200,
+            dropdownPadding: const EdgeInsets.only(top: 3),
+            dropdownDecoration: BoxDecoration(
+              color: Color.fromARGB(255, 238, 235, 235),
+            ),
+            dropdownElevation: 5,
+            scrollbarRadius: const Radius.circular(20),
+            scrollbarThickness: 10,
+            scrollbarAlwaysShow: true,
+            offset: const Offset(18, -50),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Padding FullDropdown(Size size) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 20, bottom: 8, top: 5),
+      child: Row(
+        children: [
+          const LottieContain(lottieUrl: "assets/district_1.json"),
+          SizedBox(width: size.width * 0.06),
+          DropdownButton2(
+            hint: Text("Are you a Full Member?",
+                style:
+                    GoogleFonts.roboto(color: Color.fromARGB(255, 49, 49, 49))),
+            value: selectedFull,
+            onChanged: (value) {
+              setState(() {
+                // getLocation();
+                selectedFull = value as String;
+                print(selectedFull);
+              });
+            },
+            icon: const Icon(
+              Icons.arrow_forward_ios_outlined,
+            ),
+            iconSize: 18,
+            iconEnabledColor: Colors.indigo,
+            iconDisabledColor: const Color.fromARGB(255, 255, 255, 255),
+            buttonHeight: size.height * 0.06,
+            buttonWidth: size.width * 0.65,
+            items: itemsFull
                 .map((item) => DropdownMenuItem<String>(
                       value: item,
                       child: Text(
@@ -748,17 +894,20 @@ class _HomeState extends State<Home> {
     print(selectedCommissioned);
     print(selectedDistrict);
     print('Display the message  from the url');
-    uploadFile();
+    
 
     var dio = Dio();
-    var response = await dio
-        .post("https://gentle-plateau-27906.herokuapp.com/user/register", data: {
-      "name": name_1,
-      "gender": selectedGender,
-      "phone": phone_1,
-      "email": email_1,
-      "district": selectedDistrict,
-      "isCommissioned": selectedCommissioned
-    });
+    var response = await dio.post(
+        "https://gentle-plateau-27906.herokuapp.com/user/register",
+        data: {
+          "name": name_1,
+          "phone": phone_1,
+          "congregation": selectedDistrict,
+          // "designation": req.body.designation,
+          "isFullMember": selectedFull,
+          "isCommissioned": selectedCommissioned,
+          "status": selectedStatus,
+          "photo": url
+        });
   }
 }

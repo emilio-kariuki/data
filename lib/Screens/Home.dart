@@ -543,6 +543,14 @@ class _HomeState extends State<Home> {
 
   _makeGetRequest() async {
     var dio = Dio();
-    var response = await dio.post("");
+    var response =
+        await dio.post("http://be5a-41-84-155-242.ngrok.io/user/register", data: {
+      "name": name.text,
+      "gender": selectedGender,
+      "phone": phone,
+      "email": email.text,
+      "district": selectedDistrict,
+      "isCommissioned": selectedCommissioned
+    });
   }
 }

@@ -84,7 +84,7 @@ class _HomeState extends State<Home> {
 
     try {
       FirebaseStorage storage = FirebaseStorage.instance;
-    Reference ref = storage.ref().child(fileName + DateTime.now().toString());
+    Reference ref = storage.ref().child(fileName);
     await ref.putFile(image!);
     String imageUrl = await ref.getDownloadURL();
     print(imageUrl);

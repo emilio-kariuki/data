@@ -441,7 +441,7 @@ class _HomeState extends State<Home> {
     return Padding(
       padding: const EdgeInsets.only(left: 8, right: 8),
       child: Container(
-        height: size.height * 0.46,
+        height: size.height * 0.50,
         width: size.width,
         padding: const EdgeInsets.all(3),
         decoration: BoxDecoration(
@@ -961,10 +961,9 @@ class _HomeState extends State<Home> {
   _makeGetRequest() async {
     final String name_1 = name.text;
     final String phone_1 = phone.text;
-    final String email_1 = email.text;
+  
     print(name_1);
     print(phone_1);
-    print(email_1);
     print(selectedDesignation);
     print(selectedCommissioned);
     print(selectedDistrict);

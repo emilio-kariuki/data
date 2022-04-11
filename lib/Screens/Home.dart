@@ -7,11 +7,13 @@ import 'package:data/build/lottie.dart';
 import 'package:dio/dio.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import "package:flutter/material.dart";
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -46,6 +48,31 @@ class _HomeState extends State<Home> {
   ];
   List<String> itemGender = ["Male", "Female"];
   List<String> itemCommissioned = ["Yes", "No"];
+  
+  final picker = ImagePicker();
+  File ?image;
+
+  void takePhoto(ImageSource source) async {
+    final image = await picker.pickImage(
+        source: source, maxHeight: 480, maxWidth: 640, imageQuality: 60);
+    try {
+      if (image == null) return;
+
+      final imageTempo = File(image.path);
+      setState(() {
+        this.image = imageTempo;
+      });
+    } on PlatformException catch (e) {
+      Fluttertoast.showToast(
+          backgroundColor: Colors.red,
+          msg: "Failed to pick image $e",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.TOP,
+          timeInSecForIosWeb: 1,
+          fontSize: 16.0);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -198,8 +225,8 @@ class _HomeState extends State<Home> {
                                               Color.fromARGB(255, 240, 144, 1),
                                         )
                                       : await Fluttertoast.showToast(
-                                          backgroundColor:
-                                              const Color.fromARGB(255, 105, 228, 4),
+                                          backgroundColor: const Color.fromARGB(
+                                              255, 105, 228, 4),
                                           msg:
                                               "Information Sent Successfully !!",
                                           toastLength: Toast.LENGTH_LONG,

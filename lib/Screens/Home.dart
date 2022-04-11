@@ -313,7 +313,7 @@ class _HomeState extends State<Home> {
                             TextInputType.text),
                         GestureDetector(
                           onTap: uploadFile,
-                          child: FullDropdown(size)),
+                          child: StatusDropdown(size)),
                       ],
                     ),
                   ),

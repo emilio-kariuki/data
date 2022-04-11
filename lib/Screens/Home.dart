@@ -106,7 +106,7 @@ class _HomeState extends State<Home> {
                   child: Stack(
                     children: [
                       Material(
-                        color: Color.fromARGB(255, 36, 47, 53),
+                        color: Color.fromARGB(255, 14, 14, 20),
                         elevation: 20,
                         borderRadius: BorderRadius.circular(20),
                         child: Container(
@@ -130,7 +130,7 @@ class _HomeState extends State<Home> {
                           height: size.height * 0.3,
                           width: size.width,
                           decoration: BoxDecoration(
-                            color: Colors.blueGrey[800],
+                            color: Color.fromARGB(255, 14, 14, 20),
                             // boxShadow: [
                             //   BoxShadow(
                             //     color:

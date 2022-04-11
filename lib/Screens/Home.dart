@@ -750,15 +750,15 @@ class _HomeState extends State<Home> {
     print('Display the message  from the url');
     uploadFile();
 
-    // var dio = Dio();
-    // var response = await dio
-    //     .post("http://be5a-41-84-155-242.ngrok.io/user/register", data: {
-    //   "name": name_1,
-    //   "gender": selectedGender,
-    //   "phone": phone_1,
-    //   "email": email_1,
-    //   "district": selectedDistrict,
-    //   "isCommissioned": selectedCommissioned
-    // });
+    var dio = Dio();
+    var response = await dio
+        .post("https://gentle-plateau-27906.herokuapp.com/user/register", data: {
+      "name": name_1,
+      "gender": selectedGender,
+      "phone": phone_1,
+      "email": email_1,
+      "district": selectedDistrict,
+      "isCommissioned": selectedCommissioned
+    });
   }
 }

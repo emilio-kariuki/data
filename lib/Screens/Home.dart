@@ -56,7 +56,7 @@ class _HomeState extends State<Home> {
 
   void takePhoto(ImageSource source) async {
     final image = await picker.pickImage(
-        source: source, maxHeight: 480, maxWidth: 640, imageQuality: 100);
+        source: source, maxHeight: 480, maxWidth: 640, imageQuality: 80);
     try {
       if (image == null) return;
 
@@ -91,6 +91,13 @@ class _HomeState extends State<Home> {
       // await ref.putFile(image!);
       String imageUrl = await ref.getDownloadURL();
       print(imageUrl);
+      Fluttertoast.showToast(
+          backgroundColor: Color.fromARGB(255, 49, 202, 74),
+          msg: "Image uploaded Successfully!!",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.TOP,
+          timeInSecForIosWeb: 1,
+          fontSize: 16.0);
       print("File uploaded");
     } catch (e) {
       print('error occured $e');

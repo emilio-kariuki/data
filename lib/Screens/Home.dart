@@ -83,12 +83,12 @@ class _HomeState extends State<Home> {
     final destination = 'files/$fileName';
 
     try {
-      //   FirebaseStorage storage = FirebaseStorage.instance;
-      // Reference ref = storage.ref().child(fileName);
-      // await ref.putFile(image!);
-
-      final ref = FirebaseStorage.instance.ref(destination).child('file/');
+        FirebaseStorage storage = FirebaseStorage.instance;
+      Reference ref = storage.ref().child(fileName);
       await ref.putFile(image!);
+
+      // final ref = FirebaseStorage.instance.ref(destination).child('file/');
+      // await ref.putFile(image!);
       String imageUrl = await ref.getDownloadURL();
       print(imageUrl);
       print("File uploaded");

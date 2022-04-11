@@ -915,7 +915,7 @@ class _HomeState extends State<Home> {
           "isFullMember": selectedFull,
           "isCommissioned": selectedCommissioned,
           "status": selectedStatus,
-          "photo": url
+          "url": url
         });
   }
 }

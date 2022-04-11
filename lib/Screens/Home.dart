@@ -73,6 +73,22 @@ class _HomeState extends State<Home> {
     }
   }
 
+  //send the data to the database 
+
+    Future uploadFile() async {
+    if (image == null) return;
+    final fileName = basename(image!.path);
+    final destination = 'files/$fileName';
+
+    try {
+      final ref = FirebaseStorage.instance.ref(destination).child('file/');
+      await ref.putFile(image!);
+      print("File uploaded");
+    } catch (e) {
+      print('error occured');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;

@@ -50,7 +50,7 @@ class _HomeState extends State<Home> {
   List<String> itemCommissioned = ["Yes", "No"];
 
   final picker = ImagePicker();
-  File ?image;
+  File? image;
 
   void takePhoto(ImageSource source) async {
     final image = await picker.pickImage(
@@ -98,158 +98,295 @@ class _HomeState extends State<Home> {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SvgPicture.asset("assets/login.svg", height: size.height * 0.16),
-              // SvgPicture.asset("assets/chat.svg",height: 100, width: 100),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: size.height * 0.23,
-                  width: size.width,
-                  padding: const EdgeInsets.all(3),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: const Color.fromARGB(255, 7, 9, 15),
-                  ),
-                  child: Column(
+          child: Column(children: [
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 8, right: 8, top: 6),
+                  child: Stack(
                     children: [
-                      
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10, top: 5),
-                            child: Text("Personal",
-                                style: GoogleFonts.redressed(
-                                    fontSize: 22,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w500)),
+                      Material(
+                        color: Color.fromARGB(255, 36, 47, 53),
+                        elevation: 20,
+                        borderRadius: BorderRadius.circular(20),
+                        child: Container(
+                          //  color: Colors.grey,
+                          // color: Color.fromARGB(255, 36, 47, 53),
+                          child: Center(
+                            child: image != null
+                                ? ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
+                                    child: Image.file(
+                                      image!,
+                                      width: size.width,
+                                      height: size.height * 0.32,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  )
+                                : Text("Select Image",
+                                    style: GoogleFonts.roboto(
+                                        fontSize: 20, color: Colors.white)),
                           ),
-                        ],
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 10, right: 10),
-                        child: Divider(
-                          color: Colors.white,
-                          thickness: 1,
-                          height: 10,
+                          height: size.height * 0.3,
+                          width: size.width,
+                          decoration: BoxDecoration(
+                            color: Colors.blueGrey[800],
+                            // boxShadow: [
+                            //   BoxShadow(
+                            //     color:
+                            //         Color.fromARGB(255, 255, 255, 255)
+                            //             .withOpacity(0.6),
+                            //     spreadRadius: 5,
+                            //     blurRadius: 7,
+                            //     offset: Offset(0,
+                            //         3), // changes position of shadow
+                            //   ),
+                            // ],
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                                color: Color.fromARGB(255, 14, 14, 20),
+                                width: 1),
+                          ),
+                          // image: image
                         ),
                       ),
-                      Itemz(size, "Name", "assets/person_2.json", name,
-                          TextInputType.text),
-                      GenderDropdown(size),
+                      Positioned(
+                          top: 5,
+                          right: 5,
+                          child: IconButton(
+                              onPressed: () {
+                                // takePhoto(ImageSource.camera);
+                                setState(() {
+                                  showDialog<String>(
+                                    context: context,
+                                    builder: (BuildContext context) =>
+                                        Container(
+                                      width: size.width,
+                                      height: size.height * 0.2,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color:
+                                                Color.fromARGB(255, 14, 14, 20),
+                                            width: 1),
+                                        //border: Border.all(color: Color.fromARGB(255, 182, 36, 116),width:1 ),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: AlertDialog(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(20)),
+                                        contentPadding: EdgeInsets.all(5),
+                                        title:
+                                            const Text('choose image from: '),
+                                        content: SingleChildScrollView(
+                                          child: ListBody(children: [
+                                            ListTile(
+                                              selectedColor: Colors.grey,
+                                              onTap: () {
+                                                takePhoto(ImageSource.camera);
+                                                Navigator.pop(context);
+                                              },
+                                              leading: Icon(Icons.camera,
+                                                  color: Color.fromARGB(
+                                                      255, 255, 123, 0)),
+                                              title: Text("Camera"),
+                                            ),
+                                            ListTile(
+                                              selectedColor: Colors.grey,
+                                              onTap: () {
+                                                setState(() {
+                                                  takePhoto(
+                                                      ImageSource.gallery);
+                                                  Navigator.pop(context);
+                                                });
+                                              },
+                                              leading: Icon(Icons.layers,
+                                                  color: Color.fromARGB(
+                                                      255, 0, 0, 0)),
+                                              title: GestureDetector(
+                                                  onTap: () {
+                                                    setState(() {
+                                                      takePhoto(
+                                                          ImageSource.gallery);
+                                                      Navigator.pop(context);
+                                                    });
+                                                  },
+                                                  child: Text("Gallery")),
+                                            ),
+                                            ListTile(
+                                              selectedColor: Colors.grey,
+                                              onTap: () {
+                                                Get.back();
+                                              },
+                                              leading: Icon(Icons.cancel,
+                                                  color: Colors.red),
+                                              title: Text("Cancel"),
+                                            ),
+                                          ]),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                });
+                              },
+                              icon: Icon(Icons.add_a_photo,
+                                  size: 35,
+                                  color: image != null
+                                      ? Colors.white
+                                      : Color.fromARGB(255, 223, 152, 1))))
                     ],
                   ),
                 ),
-              ),
-              Contact(size),
-              Padding(
-                padding: const EdgeInsets.all(7.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: size.height * 0.06,
-                      width: size.width * 0.36,
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                              Color.fromARGB(255, 14, 14, 20)),
-                          // MaterialStateProperty<Color?>?
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                              side: const BorderSide(
-                                color: Color.fromARGB(255, 14, 14, 20),
-                                width: 2.0,
+                // SvgPicture.asset("assets/chat.svg",height: 100, width: 100),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    height: size.height * 0.23,
+                    width: size.width,
+                    padding: const EdgeInsets.all(3),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: const Color.fromARGB(255, 7, 9, 15),
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10, top: 5),
+                              child: Text("Personal",
+                                  style: GoogleFonts.redressed(
+                                      fontSize: 22,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w500)),
+                            ),
+                          ],
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 10, right: 10),
+                          child: Divider(
+                            color: Colors.white,
+                            thickness: 1,
+                            height: 10,
+                          ),
+                        ),
+                        Itemz(size, "Name", "assets/person_2.json", name,
+                            TextInputType.text),
+                        GenderDropdown(size),
+                      ],
+                    ),
+                  ),
+                ),
+                Contact(size),
+                Padding(
+                  padding: const EdgeInsets.all(7.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: size.height * 0.06,
+                        width: size.width * 0.36,
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                                Color.fromARGB(255, 14, 14, 20)),
+                            // MaterialStateProperty<Color?>?
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                                side: const BorderSide(
+                                  color: Color.fromARGB(255, 14, 14, 20),
+                                  width: 2.0,
+                                ),
                               ),
                             ),
                           ),
+                          child: Text('Close',
+                              style: GoogleFonts.roboto(fontSize: 20)),
+                          onPressed: () => exit(0),
                         ),
-                        child: Text('Close',
-                            style: GoogleFonts.roboto(fontSize: 20)),
-                        onPressed: () => exit(0),
                       ),
-                    ),
-                    SizedBox(width: size.width * 0.08),
-                    //the submit button for the application
-                    loading
-                        ? const CircularProgressIndicator()
-                        //the code to show the dialog box
-                        : SizedBox(
-                            height: size.height * 0.06,
-                            width: size.width * 0.36,
-                            child: ElevatedButton(
-                              // disabledColor: isActivated ? Colors.grey : Color.fromARGB(255, 14, 14, 20),
-                              // color: Color.fromARGB(255, 14, 14, 20),
-                              // shape: RoundedRectangleBorder(
-                              //     borderRadius: BorderRadius.circular(30)),
-                              style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(
-                                    Color.fromARGB(255, 14, 14, 20)),
-                                // MaterialStateProperty<Color?>?
-                                shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                    side: const BorderSide(
-                                      color: Color.fromARGB(255, 14, 14, 20),
-                                      width: 2.0,
+                      SizedBox(width: size.width * 0.08),
+                      //the submit button for the application
+                      loading
+                          ? const CircularProgressIndicator()
+                          //the code to show the dialog box
+                          : SizedBox(
+                              height: size.height * 0.06,
+                              width: size.width * 0.36,
+                              child: ElevatedButton(
+                                // disabledColor: isActivated ? Colors.grey : Color.fromARGB(255, 14, 14, 20),
+                                // color: Color.fromARGB(255, 14, 14, 20),
+                                // shape: RoundedRectangleBorder(
+                                //     borderRadius: BorderRadius.circular(30)),
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                      Color.fromARGB(255, 14, 14, 20)),
+                                  // MaterialStateProperty<Color?>?
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30.0),
+                                      side: const BorderSide(
+                                        color: Color.fromARGB(255, 14, 14, 20),
+                                        width: 2.0,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              child: Text('Submit',
-                                  style: GoogleFonts.roboto(
-                                      fontSize: 20, color: Colors.white)),
-                              onPressed: () async {
-                                if (selectedGender == null &&
-                                    name == null &&
-                                    phone == null) {
-                                  Fluttertoast.showToast(
-                                      backgroundColor: Colors.red,
-                                      msg: "Fill Empty Fields",
-                                      toastLength: Toast.LENGTH_SHORT,
-                                      gravity: ToastGravity.BOTTOM,
-                                      timeInSecForIosWeb: 1,
-                                      fontSize: 16.0);
-                                } else {
-                                  setState(() {
-                                    loading = true;
-                                  });
-                                  await _makeGetRequest();
-                                  loading
-                                      ? const CircularProgressIndicator(
-                                          color:
-                                              Color.fromARGB(255, 240, 144, 1),
-                                        )
-                                      : await Fluttertoast.showToast(
-                                          backgroundColor: const Color.fromARGB(
-                                              255, 105, 228, 4),
-                                          msg:
-                                              "Information Sent Successfully !!",
-                                          toastLength: Toast.LENGTH_LONG,
-                                          gravity: ToastGravity.BOTTOM,
-                                          timeInSecForIosWeb: 1,
-                                          fontSize: 16.0);
-                                  // Future.delayed(const Duration(milliseconds: 1670),
-                                  //     () => Navigator.of(context).pop());
-                                  setState(() {
-                                    loading = false;
-                                  });
+                                child: Text('Submit',
+                                    style: GoogleFonts.roboto(
+                                        fontSize: 20, color: Colors.white)),
+                                onPressed: () async {
+                                  if (selectedGender == null &&
+                                      name == null &&
+                                      phone == null) {
+                                    Fluttertoast.showToast(
+                                        backgroundColor: Colors.red,
+                                        msg: "Fill Empty Fields",
+                                        toastLength: Toast.LENGTH_SHORT,
+                                        gravity: ToastGravity.BOTTOM,
+                                        timeInSecForIosWeb: 1,
+                                        fontSize: 16.0);
+                                  } else {
+                                    setState(() {
+                                      loading = true;
+                                    });
+                                    await _makeGetRequest();
+                                    loading
+                                        ? const CircularProgressIndicator(
+                                            color: Color.fromARGB(
+                                                255, 240, 144, 1),
+                                          )
+                                        : await Fluttertoast.showToast(
+                                            backgroundColor:
+                                                const Color.fromARGB(
+                                                    255, 105, 228, 4),
+                                            msg:
+                                                "Information Sent Successfully !!",
+                                            toastLength: Toast.LENGTH_LONG,
+                                            gravity: ToastGravity.BOTTOM,
+                                            timeInSecForIosWeb: 1,
+                                            fontSize: 16.0);
+                                    // Future.delayed(const Duration(milliseconds: 1670),
+                                    //     () => Navigator.of(context).pop());
+                                    setState(() {
+                                      loading = false;
+                                    });
 
-                                  //selectedMethod = null;
-                                }
-                              },
+                                    //selectedMethod = null;
+                                  }
+                                },
+                              ),
                             ),
-                          ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
+          ]),
         ),
       ),
     );

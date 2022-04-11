@@ -890,7 +890,31 @@ class _HomeState extends State<Home> {
   }
 
   _makeGetRequest() async {
-    uploadFile();
+    if (image == null) return;
+    final fileName = basename(image!.path);
+    final destination = 'files/$fileName';
+
+    try {
+      FirebaseStorage storage = FirebaseStorage.instance;
+      Reference ref = storage.ref().child(fileName);
+      await ref.putFile(image!);
+
+      // final ref = FirebaseStorage.instance.ref(destination).child('file/');
+      // await ref.putFile(image!);
+      String imageUrl = await ref.getDownloadURL();
+      url = imageUrl;
+      print(imageUrl);
+      Fluttertoast.showToast(
+          backgroundColor: Color.fromARGB(255, 49, 202, 74),
+          msg: "Image uploaded Successfully!!",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.TOP,
+          timeInSecForIosWeb: 1,
+          fontSize: 16.0);
+      print("File uploaded");
+    } catch (e) {
+      print('error occured $e');
+    }
     final String name_1 = name.text;
     final String phone_1 = phone.text;
 

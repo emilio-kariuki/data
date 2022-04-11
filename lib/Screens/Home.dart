@@ -75,19 +75,23 @@ class _HomeState extends State<Home> {
     }
   }
 
-  //send the data to the database
+  //send the data to the database 
 
-  Future uploadFile() async {
+    Future uploadFile() async {
     if (image == null) return;
     final fileName = basename(image!.path);
     final destination = 'files/$fileName';
 
     try {
-      final ref = FirebaseStorage.instance.ref(destination).child('file/');
-      await ref.putFile(image!);
-      String imageUrl = await ref.getDownloadURL();
-      print(imageUrl);
-      await ref.putFile(image!);
+      FirebaseStorage storage = FirebaseStorage.instance;
+    Reference ref = storage.ref().child(fileName + DateTime.now().toString());
+    await ref.putFile(image!);
+    String imageUrl = await ref.getDownloadURL();
+    print(imageUrl);
+
+      //
+      // final ref = FirebaseStorage.instance.ref(destination).child('file/');
+      // await ref.putFile(image!);
       print("File uploaded");
     } catch (e) {
       print('error occured');
@@ -740,15 +744,15 @@ class _HomeState extends State<Home> {
     print('Display the message  from the url');
     uploadFile();
 
-  //   var dio = Dio();
-  //   var response = await dio
-  //       .post("http://be5a-41-84-155-242.ngrok.io/user/register", data: {
-  //     "name": name_1,
-  //     "gender": selectedGender,
-  //     "phone": phone_1,
-  //     "email": email_1,
-  //     "district": selectedDistrict,
-  //     "isCommissioned": selectedCommissioned
-  //   });
+    // var dio = Dio();
+    // var response = await dio
+    //     .post("http://be5a-41-84-155-242.ngrok.io/user/register", data: {
+    //   "name": name_1,
+    //   "gender": selectedGender,
+    //   "phone": phone_1,
+    //   "email": email_1,
+    //   "district": selectedDistrict,
+    //   "isCommissioned": selectedCommissioned
+    // });
   }
 }

@@ -719,7 +719,7 @@ class _HomeState extends State<Home> {
           LottieContain(lottieUrl: "assets/gender_3.json"),
           SizedBox(width: size.width * 0.06),
           DropdownButton2(
-            hint: Text("Gender",
+            hint: Text("Designation",
                 style:
                     GoogleFonts.roboto(color: Color.fromARGB(255, 49, 49, 49))),
             value: selectedDesignation,

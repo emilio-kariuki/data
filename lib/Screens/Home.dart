@@ -126,7 +126,7 @@ class _HomeState extends State<Home> {
         backgroundColor: const Color.fromARGB(255, 7, 9, 15),
         title: const Padding(
           padding: EdgeInsets.all(8.0),
-          child: Text("Youth Data"),
+          child: Text("Youth"),
         ),
         actions: [
           Padding(
